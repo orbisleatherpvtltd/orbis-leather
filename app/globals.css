@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+/*
+ * ORBIS Signature Leather — design tokens
+ * Primary: white | Secondary: deep oxblood | Accent: leather brown
+ */
+@theme inline {
+  --font-sans: var(--font-poppins), "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand palette */
+  --color-paper: #ffffff;
+  --color-ink: #260701;
+  --color-leather: #532c1e;
+
+  /* Semantic aliases */
+  --color-background: var(--color-paper);
+  --color-foreground: var(--color-ink);
+
+  /* Typography scale (paired with line-height) */
+  --text-display: 3.5rem;
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.02em;
+
+  --text-h1: 2.75rem;
+  --text-h1--line-height: 1.1;
+  --text-h1--letter-spacing: -0.02em;
+
+  --text-h2: 2.25rem;
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.015em;
+
+  --text-h3: 1.75rem;
+  --text-h3--line-height: 1.2;
+  --text-h3--letter-spacing: -0.01em;
+
+  --text-h4: 1.375rem;
+  --text-h4--line-height: 1.3;
+
+  --text-subheading: 1.125rem;
+  --text-subheading--line-height: 1.5;
+
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.65;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.7;
+
+  --text-caption: 0.875rem;
+  --text-caption--line-height: 1.5;
+
+  --text-eyebrow: 0.8125rem;
+  --text-eyebrow--line-height: 1.4;
+  --text-eyebrow--letter-spacing: 0.16em;
+
+  /* Container */
+  --container-page: 80rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-leather);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-leather);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Underline-on-hover link treatment shared by inline text links */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 200ms ease;
+  }
+
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+
+  /* Accordion smooth-open using CSS grid rows (no JS height measuring) */
+  .accordion-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 250ms ease;
+  }
+
+  .accordion-panel[data-open="true"] {
+    grid-template-rows: 1fr;
+  }
+
+  .accordion-panel > div {
+    overflow: hidden;
+  }
+}
