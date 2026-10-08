@@ -2,6 +2,8 @@ import { requireAdmin } from "@/lib/auth/require-admin";
 import { AdminSidebar } from "@/components/admin/sidebar";
 import { AdminTopbar } from "@/components/admin/topbar";
 
+export const dynamic = "force-dynamic";
+
 export default async function ProtectedAdminLayout({ children }: { children: React.ReactNode }) {
   const admin = await requireAdmin();
 
