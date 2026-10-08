@@ -125,4 +125,79 @@
   .accordion-panel > div {
     overflow: hidden;
   }
+
+  /*
+   * Reveal/stagger entrance animations are pure CSS (no JS/hydration dependency)
+   * so content is guaranteed to reach its visible state even if client JS is slow,
+   * blocked, or fails to hydrate — it only ever enhances, never gates, visibility.
+   */
+  .reveal-up,
+  .reveal-down,
+  .reveal-left,
+  .reveal-right,
+  .stagger-item {
+    animation-duration: 0.6s;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    animation-fill-mode: both;
+  }
+
+  .reveal-up {
+    animation-name: reveal-up;
+  }
+
+  .reveal-down {
+    animation-name: reveal-down;
+  }
+
+  .reveal-left {
+    animation-name: reveal-left;
+  }
+
+  .reveal-right {
+    animation-name: reveal-right;
+  }
+
+  .stagger-item {
+    animation-name: reveal-up;
+  }
+
+  .stagger-group > :nth-child(1) { animation-delay: 0.05s; }
+  .stagger-group > :nth-child(2) { animation-delay: 0.14s; }
+  .stagger-group > :nth-child(3) { animation-delay: 0.23s; }
+  .stagger-group > :nth-child(4) { animation-delay: 0.32s; }
+  .stagger-group > :nth-child(5) { animation-delay: 0.41s; }
+  .stagger-group > :nth-child(6) { animation-delay: 0.5s; }
+  .stagger-group > :nth-child(n + 7) { animation-delay: 0.59s; }
+}
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes reveal-down {
+  from { opacity: 0; transform: translateY(-32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes reveal-left {
+  from { opacity: 0; transform: translateX(32px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes reveal-right {
+  from { opacity: 0; transform: translateX(-32px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up,
+  .reveal-down,
+  .reveal-left,
+  .reveal-right,
+  .stagger-item {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

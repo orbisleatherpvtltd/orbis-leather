@@ -1,19 +1,14 @@
-"use client";
-
-import type { ReactNode } from "react";
-import { motion, useReducedMotion, type Transition } from "framer-motion";
+import type { CSSProperties, ReactNode } from "react";
 import { cn } from "@/lib/utils";
-
-const springTransition: Transition = { type: "spring", stiffness: 140, damping: 20 };
 
 type RevealDirection = "up" | "down" | "left" | "right" | "none";
 
-const offsets: Record<RevealDirection, { x?: number; y?: number }> = {
-  up: { y: 32 },
-  down: { y: -32 },
-  left: { x: 32 },
-  right: { x: -32 },
-  none: {},
+const directionClass: Record<RevealDirection, string> = {
+  up: "reveal-up",
+  down: "reveal-down",
+  left: "reveal-left",
+  right: "reveal-right",
+  none: "",
 };
 
 export type RevealProps = {
@@ -24,21 +19,11 @@ export type RevealProps = {
 };
 
 export function Reveal({ children, direction = "up", delay = 0, className }: RevealProps) {
-  const reduceMotion = useReducedMotion();
-  const offset = offsets[direction];
-
-  if (reduceMotion) {
-    return <div className={cn(className)}>{children}</div>;
-  }
+  const style: CSSProperties | undefined = delay ? { animationDelay: `${delay}s` } : undefined;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, ...offset }}
-      animate={{ opacity: 1, x: 0, y: 0 }}
-      transition={{ ...springTransition, delay }}
-      className={cn(className)}
-    >
+    <div className={cn(directionClass[direction], className)} style={style}>
       {children}
-    </motion.div>
+    </div>
   );
 }
