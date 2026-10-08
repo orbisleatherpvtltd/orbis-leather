@@ -1,6 +1,7 @@
 import { randomBytes } from "node:crypto";
 import { prisma } from "@/lib/db";
 import { hashPassword } from "@/lib/auth/password";
+import { dummyImage } from "@/lib/dummy-images";
 import { productCategories } from "@/lib/products/categories";
 import { mockProducts } from "@/lib/products/mock-data";
 import { blogCategories } from "@/lib/blog/categories";
@@ -55,10 +56,9 @@ async function seedProductCategories() {
 
 async function seedProducts() {
   let created = 0;
-  for (const product of mockProducts) {
-    const existing = await prisma.product.findUnique({ where: { slug: product.slug } });
-    if (existing) continue;
+  let imagesCreated = 0;
 
+  for (const [index, product] of mockProducts.entries()) {
     const category = await prisma.productCategory.findUnique({
       where: { slug: product.category.slug },
     });
@@ -66,30 +66,51 @@ async function seedProducts() {
       throw new Error(`[SEED] Missing product category "${product.category.slug}" — run seedProductCategories() first.`);
     }
 
-    await prisma.product.create({
-      data: {
-        slug: product.slug,
-        name: product.name,
-        categoryId: category.id,
-        shortDescription: product.shortDescription,
-        description: product.description,
-        leatherType: product.leatherType,
-        priceRange: product.priceRange,
-        moq: product.moq,
-        leadTime: product.leadTime,
-        specifications: product.specifications,
-        customizationOptions: product.customizationOptions,
-        isPrivateLabel: product.category.slug === "custom-private-label",
-        isFeatured: product.featured,
-        status: product.status,
-        isSampleContent: true,
-        seoTitle: product.seoTitle,
-        seoDescription: product.seoDescription,
-      },
-    });
-    created += 1;
+    let row = await prisma.product.findUnique({ where: { slug: product.slug } });
+    if (!row) {
+      row = await prisma.product.create({
+        data: {
+          slug: product.slug,
+          name: product.name,
+          categoryId: category.id,
+          shortDescription: product.shortDescription,
+          description: product.description,
+          leatherType: product.leatherType,
+          priceRange: product.priceRange,
+          moq: product.moq,
+          leadTime: product.leadTime,
+          specifications: product.specifications,
+          customizationOptions: product.customizationOptions,
+          isPrivateLabel: product.category.slug === "custom-private-label",
+          isFeatured: product.featured,
+          status: product.status,
+          isSampleContent: true,
+          seoTitle: product.seoTitle,
+          seoDescription: product.seoDescription,
+        },
+      });
+      created += 1;
+    }
+
+    // Backfill images for products that already existed without any (e.g. from
+    // before this relation was wired up) as well as freshly created ones.
+    const existingImageCount = await prisma.productImage.count({ where: { productId: row.id } });
+    if (existingImageCount === 0 && product.images.length > 0) {
+      await prisma.productImage.createMany({
+        data: product.images.map((image, imageIndex) => ({
+          productId: row.id,
+          url: image.url ?? dummyImage(index * 3 + imageIndex),
+          altText: image.altText,
+          sortOrder: imageIndex,
+          isPrimary: image.isPrimary ?? imageIndex === 0,
+        })),
+      });
+      imagesCreated += product.images.length;
+    }
   }
+
   console.log(`[SEED] Created ${created} sample products (isSampleContent: true).`);
+  console.log(`[SEED] Created ${imagesCreated} product images.`);
 }
 
 async function seedBlogCategories() {
