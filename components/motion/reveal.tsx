@@ -20,19 +20,10 @@ export type RevealProps = {
   children: ReactNode;
   direction?: RevealDirection;
   delay?: number;
-  amount?: number;
-  once?: boolean;
   className?: string;
 };
 
-export function Reveal({
-  children,
-  direction = "up",
-  delay = 0,
-  amount = 0.35,
-  once = true,
-  className,
-}: RevealProps) {
+export function Reveal({ children, direction = "up", delay = 0, className }: RevealProps) {
   const reduceMotion = useReducedMotion();
   const offset = offsets[direction];
 
@@ -43,8 +34,7 @@ export function Reveal({
   return (
     <motion.div
       initial={{ opacity: 0, ...offset }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once, amount }}
+      animate={{ opacity: 1, x: 0, y: 0 }}
       transition={{ ...springTransition, delay }}
       className={cn(className)}
     >

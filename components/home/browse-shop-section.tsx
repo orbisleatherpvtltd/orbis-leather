@@ -47,19 +47,19 @@ export function BrowseShopSection({
         {gridProducts.length === 0 ? (
           <p className="text-body text-ink/60">Check back soon for published products.</p>
         ) : (
-          <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:[grid-template-areas:'p1_sp_p3'_'p2_sp_p4']">
+          <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {gridProducts[0] && (
-              <StaggerItem className="lg:[grid-area:p1]">
+              <StaggerItem className="lg:col-start-1 lg:row-start-1">
                 <ShopProductCard product={gridProducts[0]} />
               </StaggerItem>
             )}
             {gridProducts[1] && (
-              <StaggerItem className="lg:[grid-area:p2]">
+              <StaggerItem className="lg:col-start-1 lg:row-start-2">
                 <ShopProductCard product={gridProducts[1]} />
               </StaggerItem>
             )}
             {special && specialImage && (
-              <StaggerItem className="lg:[grid-area:sp]">
+              <StaggerItem className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
                 <SpecialProgramCard
                   href={`/products/${special.slug}`}
                   image={specialImage.url ?? ""}
@@ -70,12 +70,12 @@ export function BrowseShopSection({
               </StaggerItem>
             )}
             {gridProducts[2] && (
-              <StaggerItem className="lg:[grid-area:p3]">
+              <StaggerItem className="lg:col-start-3 lg:row-start-1">
                 <ShopProductCard product={gridProducts[2]} />
               </StaggerItem>
             )}
             {gridProducts[3] && (
-              <StaggerItem className="lg:[grid-area:p4]">
+              <StaggerItem className="lg:col-start-3 lg:row-start-2">
                 <ShopProductCard product={gridProducts[3]} />
               </StaggerItem>
             )}

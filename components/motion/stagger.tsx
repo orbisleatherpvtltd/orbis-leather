@@ -26,13 +26,9 @@ const itemVariants = {
 export function StaggerGroup({
   children,
   className,
-  amount = 0.2,
-  once = true,
 }: {
   children: ReactNode;
   className?: string;
-  amount?: number;
-  once?: boolean;
 }) {
   const reduceMotion = useReducedMotion();
 
@@ -43,8 +39,7 @@ export function StaggerGroup({
   return (
     <motion.div
       initial="hidden"
-      whileInView="show"
-      viewport={{ once, amount }}
+      animate="show"
       variants={containerVariants}
       className={cn(className)}
     >
