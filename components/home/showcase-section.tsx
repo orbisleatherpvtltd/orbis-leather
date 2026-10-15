@@ -19,27 +19,27 @@ type ShowcaseCard = {
 const cards: ShowcaseCard[] = [
   {
     src: "https://images.unsplash.com/photo-1531310197839-ccf54634509e?auto=format&fit=crop&w=600&q=80",
-    alt: "Detail of genuine leather bag (placeholder)",
+    alt: "Detail of genuine leather bag",
     ring: "ring-leather/40",
   },
   {
     src: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80",
-    alt: "Genuine leather jacket on display (placeholder)",
+    alt: "Genuine leather jacket on display",
     ring: "ring-ink/20",
   },
   {
     src: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80",
-    alt: "Leather jacket flat lay (placeholder)",
+    alt: "Leather jacket flat lay",
     ring: "ring-amber-700/40",
   },
   {
     src: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80",
-    alt: "Pair of leather boots (placeholder)",
+    alt: "Pair of leather boots",
     ring: "ring-stone-400/50",
   },
   {
     src: "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=600&q=80",
-    alt: "Genuine leather handbag (placeholder)",
+    alt: "Genuine leather handbag",
     ring: "ring-leather/40",
   },
 ];

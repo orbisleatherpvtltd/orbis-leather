@@ -15,7 +15,7 @@ export function CompleteTheProgram({ products }: { products: Product[] }) {
         <Reveal direction="right">
           <ImageFrame
             src={lifestyleImage(2, 1200)}
-            alt="Model wearing a leather jacket in an editorial autumn setting (placeholder)"
+            alt="Model wearing a leather jacket in an editorial autumn setting"
             ratio="portrait"
             className="rounded-3xl shadow-2xl shadow-ink/10"
           />
@@ -51,7 +51,7 @@ export function CompleteTheProgram({ products }: { products: Product[] }) {
                       {product.leatherType ?? product.category.name}
                     </span>
                   </div>
-                  <TextLink href={`/products/${product.slug}`} withArrow tone="leather" className="shrink-0">
+                  <TextLink href={`/request-quote?product=${product.slug}`} withArrow tone="leather" className="shrink-0">
                     Request Quote
                   </TextLink>
                 </StaggerItem>

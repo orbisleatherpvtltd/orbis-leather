@@ -15,7 +15,7 @@ export function LifestyleBanner({ product }: { product: Product | null }) {
       <Reveal className="relative overflow-hidden rounded-3xl shadow-2xl shadow-ink/20">
         <ImageFrame
           src={lifestyleImage(3, 1800)}
-          alt="Model wearing a leather jacket in a cold-weather outdoor setting (placeholder)"
+          alt="Model wearing a leather jacket in a cold-weather outdoor setting"
           ratio="wide"
           zoom={false}
           className="min-h-[380px] sm:min-h-[440px]"

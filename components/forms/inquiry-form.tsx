@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import type { InquiryType } from "@/app/generated/prisma/enums";
 import { AlertIcon, CheckIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
@@ -44,6 +44,12 @@ export function InquiryForm({
     initialInquiryState,
   );
   const [formRenderedAt] = useState(() => Date.now().toString());
+
+  useEffect(() => {
+    if (state.status === "success") {
+      window.gtag?.("event", "generate_lead", { form_name: variant });
+    }
+  }, [state.status, variant]);
 
   if (state.status === "success") {
     return (

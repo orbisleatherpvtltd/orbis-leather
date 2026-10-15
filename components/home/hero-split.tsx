@@ -157,7 +157,7 @@ export function HeroSplit({ categories }: { categories: ProductCategory[] }) {
             aria-hidden="true"
             className="pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2 select-none whitespace-nowrap text-[22vw] font-black uppercase tracking-tighter text-ink/[0.025] lg:text-[14vw]"
           >
-            HAUTE TANNERY
+            ORBIS LEATHER
           </span>
 
           <div className="relative grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
@@ -169,24 +169,25 @@ export function HeroSplit({ categories }: { categories: ProductCategory[] }) {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-leather opacity-75" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-leather" />
                 </span>
-                EST. MASTER TANNERY & OEM ATELIER
+                EST. LEATHER MANUFACTURING & OEM ATELIER
               </div>
 
               {/* Main Headline */}
               <h1 className="text-[3.3em] font-extrabold tracking-tight text-ink leading-[1.08]">
-                Crafting a new
+                Leather Jacket Manufacturer
                 <br />
-                age of{" "}
+                in Pakistan for{" "}
                 <span className="relative inline-block font-serif italic text-leather">
-                  genuine leather
+                  Wholesale &amp; Private Label
                   <span className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-gradient-to-r from-leather via-amber-600 to-transparent" />
-                </span>
+                </span>{" "}
+                Brands
               </h1>
 
               {/* Description */}
               <p className="max-w-md text-base leading-relaxed text-ink/70 sm:text-lg">
-                Wholesale and private-label leather manufacturing — proven styles, custom
-                programs, and decades of craftsmanship behind every unit.
+                Crafting a new age of genuine leather — proven styles, custom programs, and
+                decades of craftsmanship behind every unit.
               </p>
 
               {/* Action Buttons */}
@@ -275,7 +276,7 @@ export function HeroSplit({ categories }: { categories: ProductCategory[] }) {
                     />
                     <text className="fill-leather text-[8.5px] font-bold uppercase tracking-[0.24em]">
                       <textPath href="#circlePath">
-                        • GENUINE CRAFTSMANSHIP • MASTER TANNERY
+                        • GENUINE CRAFTSMANSHIP • ORBIS LEATHER
                       </textPath>
                     </text>
                   </svg>

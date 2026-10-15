@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     path: `/blog/${post.slug}`,
     image: ogImage.url ? { url: ogImage.url, alt: ogImage.altText } : undefined,
     type: "article",
+    noindex: post.isSampleContent,
   });
 
   return {

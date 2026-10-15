@@ -21,16 +21,11 @@ export const legalNav: NavItem[] = [
 export const requestQuoteHref = "/request-quote";
 
 /**
- * Reads from NEXT_PUBLIC_SITE_URL in production. Falls back to an RFC 2606
- * .example domain placeholder, consistent with siteConfig.contact.email below,
- * pending a real production domain being set via the env var.
+ * Reads from NEXT_PUBLIC_SITE_URL in production. Falls back to the real
+ * production domain so canonical/og:url tags are never wrong by default.
  */
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.orbisleather.example";
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.orbisleatherpvtltd.com";
 
-/**
- * All values below are structural placeholders (RFC 2606 .example domain,
- * zeroed phone number, "#" social links) pending real brand information.
- */
 export const siteConfig = {
   name: "ORBIS Signature Leather",
   shortName: "ORBIS",
@@ -38,17 +33,17 @@ export const siteConfig = {
   description:
     "Premium B2B wholesale leather manufacturing and private label production.",
   contact: {
-    phone: "+00 (0) 000 000 000",
-    email: "info@orbisleather.example",
-    addressLines: ["Industrial District", "City, Country"],
+    phone: "+92 333 4544557",
+    email: "inquiry@orbisleatherpvtltd.com",
+    addressLines: ["Sector 35 B, Landhi Town", "Karachi, Pakistan"],
   },
   whatsapp: {
-    number: "10000000000",
-    href: "https://wa.me/10000000000",
+    number: "923334544557",
+    href: "https://wa.me/923334544557",
   },
-  social: [
-    { label: "Instagram", href: "#" },
-    { label: "LinkedIn", href: "#" },
-    { label: "Facebook", href: "#" },
-  ],
+  // No real social profile URLs yet — keep empty so the footer hides the
+  // icons rather than linking to dead "#" placeholders. Repopulate once the
+  // owner provides real Instagram/LinkedIn/Facebook URLs, and add them to
+  // organizationJsonLd()'s `sameAs` in lib/seo/schema.ts at the same time.
+  social: [] as { label: string; href: string }[],
 } as const;

@@ -39,21 +39,23 @@ export function Footer() {
           <StaggerItem className="flex flex-col gap-4">
             <Logo layout="horizontal" tone="reverse" />
             <p className="max-w-xs text-body text-paper/70">{siteConfig.description}</p>
-            <div className="flex gap-2 pt-2">
-              {siteConfig.social.map((item) => {
-                const Icon = socialIcons[item.label];
-                return (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    aria-label={item.label}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-paper/20 text-paper/80 transition-all duration-200 hover:scale-105 hover:border-paper hover:text-paper"
-                  >
-                    {Icon && <Icon className="h-4 w-4" />}
-                  </a>
-                );
-              })}
-            </div>
+            {siteConfig.social.length > 0 && (
+              <div className="flex gap-2 pt-2">
+                {siteConfig.social.map((item) => {
+                  const Icon = socialIcons[item.label];
+                  return (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      aria-label={item.label}
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-paper/20 text-paper/80 transition-all duration-200 hover:scale-105 hover:border-paper hover:text-paper"
+                    >
+                      {Icon && <Icon className="h-4 w-4" />}
+                    </a>
+                  );
+                })}
+              </div>
+            )}
           </StaggerItem>
 
           <StaggerItem>
@@ -79,8 +81,16 @@ export function Footer() {
               Contact
             </h3>
             <ul className="mt-4 flex flex-col gap-3 text-body text-paper/80">
-              <li>{siteConfig.contact.phone}</li>
-              <li>{siteConfig.contact.email}</li>
+              <li>
+                <a href={`tel:${siteConfig.contact.phone.replace(/\s+/g, "")}`} className="link-underline hover:text-paper">
+                  {siteConfig.contact.phone}
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${siteConfig.contact.email}`} className="link-underline hover:text-paper">
+                  {siteConfig.contact.email}
+                </a>
+              </li>
               {siteConfig.contact.addressLines.map((line) => (
                 <li key={line}>{line}</li>
               ))}

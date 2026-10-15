@@ -15,6 +15,8 @@ export type BuildMetadataInput = {
    * template would otherwise duplicate it.
    */
   titleMode?: "template" | "absolute";
+  /** Set true for pages with no real content yet (sample/placeholder data). */
+  noindex?: boolean;
 };
 
 export function buildMetadata({
@@ -24,6 +26,7 @@ export function buildMetadata({
   image,
   type = "website",
   titleMode = "template",
+  noindex = false,
 }: BuildMetadataInput): Metadata {
   const url = new URL(path, siteUrl).toString();
   const images = image ? [{ url: image.url, alt: image.alt }] : undefined;
@@ -32,6 +35,7 @@ export function buildMetadata({
     title: titleMode === "absolute" ? { absolute: title } : title,
     description,
     alternates: { canonical: path },
+    ...(noindex ? { robots: { index: false, follow: true } } : {}),
     openGraph: {
       title,
       description,

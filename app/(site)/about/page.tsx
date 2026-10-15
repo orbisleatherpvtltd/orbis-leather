@@ -100,7 +100,7 @@ export default function AboutPage() {
           <Reveal direction="left" delay={0.1}>
             <ImageFrame
               src={dummyImage(0, 1200)}
-              alt="ORBIS manufacturing facility (placeholder)"
+              alt="ORBIS manufacturing facility"
               ratio="portrait"
               className="rounded-3xl shadow-2xl shadow-ink/10"
             />
@@ -143,7 +143,7 @@ export default function AboutPage() {
             <StaggerItem key={caption} className="flex flex-col gap-3">
               <ImageFrame
                 src={dummyImage(index + 1, 800)}
-                alt={`${caption} (placeholder)`}
+                alt={caption}
                 ratio="square"
                 className="rounded-2xl shadow-lg shadow-ink/5"
               />

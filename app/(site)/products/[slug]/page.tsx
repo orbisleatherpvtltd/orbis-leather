@@ -38,6 +38,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
     description: product.seoDescription ?? product.shortDescription ?? product.name,
     path: `/products/${product.slug}`,
     image: primaryImage?.url ? { url: primaryImage.url, alt: primaryImage.altText } : undefined,
+    noindex: product.isSampleContent,
   });
 }
 

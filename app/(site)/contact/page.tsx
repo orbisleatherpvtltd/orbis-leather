@@ -46,11 +46,19 @@ export default function ContactPage() {
             <dl className="flex flex-col gap-3 text-body text-ink/80">
               <div>
                 <dt className="text-caption uppercase tracking-wide text-ink/60">Phone</dt>
-                <dd>{siteConfig.contact.phone}</dd>
+                <dd>
+                  <a href={`tel:${siteConfig.contact.phone.replace(/\s+/g, "")}`} className="link-underline hover:text-leather">
+                    {siteConfig.contact.phone}
+                  </a>
+                </dd>
               </div>
               <div>
                 <dt className="text-caption uppercase tracking-wide text-ink/60">Email</dt>
-                <dd>{siteConfig.contact.email}</dd>
+                <dd>
+                  <a href={`mailto:${siteConfig.contact.email}`} className="link-underline hover:text-leather">
+                    {siteConfig.contact.email}
+                  </a>
+                </dd>
               </div>
               <div>
                 <dt className="text-caption uppercase tracking-wide text-ink/60">Address</dt>

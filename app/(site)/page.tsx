@@ -25,9 +25,9 @@ import { Reveal } from "@/components/motion/reveal";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = buildMetadata({
-  title: "ORBIS Signature Leather",
+  title: "Leather Jacket Manufacturer Pakistan | Private Label | ORBIS",
   description:
-    "ORBIS Signature Leather — premium B2B wholesale leather manufacturing and private label production, based in Pakistan.",
+    "ORBIS is a leather jacket manufacturer in Pakistan serving wholesale and private label brands with custom specs, low MOQs, and fast turnaround. Request a quote.",
   path: "/",
   titleMode: "absolute",
 });

@@ -151,16 +151,20 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
   }
 }
 
+// Sample/placeholder catalog is excluded here: sitemap.ts consumes this, and
+// placeholder product pages are noindex'd until real content replaces them.
 export async function getProductSlugs(): Promise<string[]> {
   try {
     const rows = await prisma.product.findMany({
-      where: { status: "PUBLISHED" },
+      where: { status: "PUBLISHED", isSampleContent: false },
       select: { slug: true },
     });
-    if (rows.length === 0) return dummyProducts.map((product) => product.slug);
+    if (rows.length === 0) {
+      return dummyProducts.filter((product) => !product.isSampleContent).map((product) => product.slug);
+    }
     return rows.map((row) => row.slug);
   } catch (error) {
     console.warn("getProductSlugs: falling back to sample catalog", error);
-    return dummyProducts.map((product) => product.slug);
+    return dummyProducts.filter((product) => !product.isSampleContent).map((product) => product.slug);
   }
 }

@@ -6,6 +6,7 @@ export const metadata: Metadata = buildMetadata({
   title: "Privacy Policy",
   description: "How ORBIS Signature Leather collects, uses, and protects your information.",
   path: "/privacy-policy",
+  noindex: true,
 });
 
 export default function PrivacyPolicyPage() {

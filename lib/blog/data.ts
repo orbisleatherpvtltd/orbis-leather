@@ -148,17 +148,21 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   }
 }
 
+// Sample/placeholder posts are excluded here: sitemap.ts consumes this, and
+// placeholder blog pages are noindex'd until real content replaces them.
 export async function getPostSlugs(): Promise<string[]> {
   try {
     const rows = await prisma.blogPost.findMany({
-      where: publishedWhere,
+      where: { ...publishedWhere, isSampleContent: false },
       select: { slug: true },
     });
-    if (rows.length === 0) return mockBlogPosts.map((post) => post.slug);
+    if (rows.length === 0) {
+      return mockBlogPosts.filter((post) => !post.isSampleContent).map((post) => post.slug);
+    }
     return rows.map((row) => row.slug);
   } catch (error) {
     console.warn("getPostSlugs: falling back to sample catalog", error);
-    return mockBlogPosts.map((post) => post.slug);
+    return mockBlogPosts.filter((post) => !post.isSampleContent).map((post) => post.slug);
   }
 }
 

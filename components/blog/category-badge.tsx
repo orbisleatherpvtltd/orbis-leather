@@ -18,7 +18,7 @@ export function CategoryBadge({
   }
 
   return (
-    <Link href={`/blog?category=${category.slug}`}>
+    <Link href={`/blog/category/${category.slug}`}>
       <Badge variant="outline" className="w-fit transition-colors duration-200 hover:border-ink">
         {category.name}
       </Badge>

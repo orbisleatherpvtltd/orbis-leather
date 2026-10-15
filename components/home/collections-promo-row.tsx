@@ -10,14 +10,14 @@ const promos = [
     caption: "Styles across 3 programs",
     href: "/products",
     image: dummyImage(3, 1600),
-    alt: "New leather outerwear style, product detail (placeholder)",
+    alt: "New leather outerwear style, product detail",
   },
   {
     label: "Upcoming Collections",
     caption: "Release details confirmed at quote stage",
     href: "/capabilities",
     image: dummyImage(4, 1600),
-    alt: "Leather goods flat lay, upcoming collection preview (placeholder)",
+    alt: "Leather goods flat lay, upcoming collection preview",
   },
 ];
 

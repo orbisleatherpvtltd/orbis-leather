@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: "ORBIS Signature Leather",
-    template: "%s | ORBIS Signature Leather",
+    template: "%s | ORBIS",
   },
   description,
   openGraph: {

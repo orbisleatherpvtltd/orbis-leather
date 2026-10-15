@@ -1,8 +1,8 @@
 import type { BreadcrumbItem } from "@/components/ui/breadcrumb";
 import { siteConfig, siteUrl } from "@/lib/site-config";
 
-// siteConfig.social/contact.phone are placeholder values (see lib/site-config.ts) —
-// omitted here so structured data never publishes fake sameAs/telephone/logo URLs.
+// `sameAs` is omitted until siteConfig.social has real profile URLs — see the
+// comment on that field in lib/site-config.ts.
 export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
@@ -10,6 +10,15 @@ export function organizationJsonLd() {
     name: siteConfig.name,
     url: siteUrl,
     description: siteConfig.description,
+    logo: new URL("/images/Orbis.logo.png", siteUrl).toString(),
+    email: siteConfig.contact.email,
+    telephone: siteConfig.contact.phone,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: siteConfig.contact.addressLines[0],
+      addressLocality: "Karachi",
+      addressCountry: "PK",
+    },
   };
 }
 
