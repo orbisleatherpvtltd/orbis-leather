@@ -186,7 +186,7 @@ export function HeroSplit({ categories }: { categories: ProductCategory[] }) {
 
               {/* Description */}
               <p className="max-w-md text-base leading-relaxed text-ink/70 sm:text-lg">
-                Crafting a new age of genuine leather — proven styles, custom programs, and
+                Crafting a new age of genuine leather: proven styles, custom programs, and
                 decades of craftsmanship behind every unit.
               </p>
 

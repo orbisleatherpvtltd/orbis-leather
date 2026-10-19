@@ -15,7 +15,7 @@ export function FooterProgramCta() {
         tone="ink"
         eyebrow="Wholesale Inquiries"
         title="Start your leather program with ORBIS"
-        description="Tell us about your specifications and volumes — our team will follow up with a tailored quote."
+        description="Tell us about your specifications and volumes. Our team will follow up with a tailored quote."
         actions={
           <ButtonLink href={requestQuoteHref} variant="reverse">
             Request Quote

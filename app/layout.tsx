@@ -11,7 +11,7 @@ const poppins = Poppins({
 });
 
 const description =
-  "ORBIS Leather — premium B2B wholesale leather manufacturing and private label production.";
+  "ORBIS Leather, premium B2B wholesale leather manufacturing and private label production.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

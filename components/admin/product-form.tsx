@@ -94,7 +94,7 @@ export function ProductForm({
       <FormField
         id="priceRange"
         label="Price Range"
-        helperText="Internal/admin field. Never shown publicly — see Request Quote CTA."
+        helperText="Internal/admin field. Never shown publicly. See Request Quote CTA."
       >
         <Input id="priceRange" name="priceRange" defaultValue={defaultValues.priceRange} />
       </FormField>

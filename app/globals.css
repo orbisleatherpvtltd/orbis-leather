@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /*
- * ORBIS Signature Leather — design tokens
+ * ORBIS Signature Leather design tokens
  * Primary: white | Secondary: deep oxblood | Accent: leather brown
  */
 @theme inline {
@@ -129,7 +129,7 @@
   /*
    * Reveal/stagger entrance animations are pure CSS (no JS/hydration dependency)
    * so content is guaranteed to reach its visible state even if client JS is slow,
-   * blocked, or fails to hydrate — it only ever enhances, never gates, visibility.
+   * blocked, or fails to hydrate. It only ever enhances, never gates, visibility.
    */
   .reveal-up,
   .reveal-down,

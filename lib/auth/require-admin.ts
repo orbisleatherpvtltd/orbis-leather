@@ -14,7 +14,7 @@ export type CurrentAdmin = {
 /**
  * Authoritative, DB-backed session check. Distinct from middleware.ts, which
  * only verifies the cookie signature (fast, Edge-compatible, no DB access) to
- * redirect anonymous visitors early — every Server Action and protected page
+ * redirect anonymous visitors early - every Server Action and protected page
  * must still call this before reading/mutating admin data.
  */
 export async function getCurrentAdmin(): Promise<CurrentAdmin | null> {

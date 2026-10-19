@@ -17,7 +17,7 @@ import { processSteps } from "@/lib/capabilities/data";
 export const metadata: Metadata = buildMetadata({
   title: "Capabilities",
   description:
-    "Our manufacturing process and production capabilities — from genuine leather sourcing to OEM, private label, and shipping.",
+    "Our manufacturing process and production capabilities, from genuine leather sourcing to OEM, private label, and shipping.",
   path: "/capabilities",
 });
 
@@ -56,7 +56,7 @@ const coverage = [
   },
   {
     title: "Lead Time",
-    description: "Lead times vary by order volume and customization — confirmed at quote stage.",
+    description: "Lead times vary by order volume and customization, confirmed at quote stage.",
   },
   {
     title: "Shipping Options",
@@ -115,7 +115,7 @@ export default function CapabilitiesPage() {
       <CtaBanner
         eyebrow="Start a Project"
         title="Have specifications ready?"
-        description="Send us your product details, quantities, and timeline — we'll follow up with a tailored quote."
+        description="Send us your product details, quantities, and timeline. We'll follow up with a tailored quote."
         actions={
           <ButtonLink href={requestQuoteHref} variant="reverse">
             Request Quote

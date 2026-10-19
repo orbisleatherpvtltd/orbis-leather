@@ -7,7 +7,7 @@ export const config = {
 
 // Fast signature-only check for redirect UX. Every admin Server Action /
 // Server Component must independently re-validate the session against the
-// database via requireAdmin() — Proxy is not a substitute for real authorization checks.
+// database via requireAdmin() - Proxy is not a substitute for real authorization checks.
 export async function proxy(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl;
 

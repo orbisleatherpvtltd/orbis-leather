@@ -37,7 +37,7 @@ export type Product = {
   shortDescription: string;
   description: string;
   leatherType?: string;
-  /** Internal/admin field. Never rendered publicly — see "Request Quote" CTA. */
+  /** Internal/admin field. Never rendered publicly - see "Request Quote" CTA. */
   priceRange?: string;
   moq?: string;
   leadTime?: string;

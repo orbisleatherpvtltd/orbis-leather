@@ -88,7 +88,7 @@ export function ShowcaseSection() {
         >
           <Badge variant="outline">Why Manufacturers Choose Us</Badge>
           <h2 className="max-w-md text-h2 font-bold text-ink">
-            Whether it&apos;s bags, jackets, or footwear —{" "}
+            Whether it&apos;s bags, jackets, or footwear:{" "}
             <span className="text-leather">we manufacture it right.</span>
           </h2>
           <p className="max-w-md text-body-lg text-ink/70">

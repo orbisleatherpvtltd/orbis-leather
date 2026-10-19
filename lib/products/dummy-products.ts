@@ -12,7 +12,7 @@ function images(offset: number, altBase: string): Product["images"] {
   return [0, 1, 2].map((i) => ({
     id: `dummy-img-${offset}-${i}`,
     url: dummyImage(offset + i, i === 0 ? 1200 : 800),
-    altText: `${altBase} — view ${i + 1}`,
+    altText: `${altBase} - view ${i + 1}`,
     isPrimary: i === 0,
   }));
 }

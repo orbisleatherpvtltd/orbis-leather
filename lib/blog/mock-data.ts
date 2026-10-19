@@ -7,11 +7,11 @@ const companyNews = blogCategories[0];
 const careGuides = blogCategories[2];
 
 const SAMPLE_NOTICE =
-  "Sample article for demonstration purposes. This content is placeholder copy and does not represent a verified company publication — replace it from the admin CMS.";
+  "Sample article for demonstration purposes. This content is placeholder copy and does not represent a verified company publication - replace it from the admin CMS.";
 
 /**
  * Mock blog catalog. This file is the only thing Phase 6 needs to replace
- * with real Prisma queries — lib/blog/data.ts already returns Promises and
+ * with real Prisma queries - lib/blog/data.ts already returns Promises and
  * consumers only depend on the `BlogPost` type, not this data source.
  *
  * Every entry is marked `isSampleContent: true` and carries an explicit
@@ -37,7 +37,7 @@ When specifying a program, buyers typically weigh grade against cost, intended u
 
 ## Talk to Our Team
 
-Every program is different — our team can walk through material options once we understand your target price point and volumes.`,
+Every program is different - our team can walk through material options once we understand your target price point and volumes.`,
     heroImage: {
       url: dummyImage(0, 1600),
       altText: "Rolls of leather hide in a manufacturing workshop",
@@ -47,7 +47,7 @@ Every program is different — our team can walk through material options once w
     author: "ORBIS Editorial Team",
     publishedAt: "2026-08-20T00:00:00.000Z",
     status: "PUBLISHED",
-    seoTitle: "Full-Grain vs. Top-Grain Leather — Buyer's Overview",
+    seoTitle: "Full-Grain vs. Top-Grain Leather - Buyer's Overview",
     seoDescription:
       "A brief, buyer-focused overview of full-grain and top-grain leather grades for wholesale outerwear programs.",
     isSampleContent: true,
@@ -64,7 +64,7 @@ Every program is different — our team can walk through material options once w
 
 ## Checkpoints Along the Line
 
-Quality control in leather manufacturing typically happens at multiple stages — material inspection, cutting, stitching, and final finishing — rather than at a single checkpoint.
+Quality control in leather manufacturing typically happens at multiple stages - material inspection, cutting, stitching, and final finishing - rather than at a single checkpoint.
 
 ## Why It Matters for Buyers
 
@@ -172,7 +172,7 @@ This entry exists to demonstrate how a short company update might look in the bl
 
 ## Replacing This Content
 
-Once the admin CMS is connected, this post — and every other sample post in this list — should be replaced or removed.`,
+Once the admin CMS is connected, this post - and every other sample post in this list - should be replaced or removed.`,
     heroImage: {
       url: dummyImage(4, 1600),
       altText: "Placeholder hero image for a sample company update",

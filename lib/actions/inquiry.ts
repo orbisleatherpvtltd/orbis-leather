@@ -154,7 +154,7 @@ export async function submitInquiry(
 
   const message =
     data.message ||
-    `${data.inquiryType}${data.quantityPerStyle ? ` — ${data.quantityPerStyle} pieces per style` : ""}`;
+    `${data.inquiryType}${data.quantityPerStyle ? ` - ${data.quantityPerStyle} pieces per style` : ""}`;
 
   try {
     const recentFromIp = await prisma.inquiry.count({

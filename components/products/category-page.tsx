@@ -45,7 +45,7 @@ export async function CategoryPage({ slug }: { slug: ProductCategorySlug }) {
       <CtaBanner
         eyebrow="Need Something Different?"
         title="Talk to us about a custom program"
-        description="Share your designs, materials, and volumes — our team will follow up with a tailored quote."
+        description="Share your designs, materials, and volumes. Our team will follow up with a tailored quote."
         actions={
           <ButtonLink href={requestQuoteHref} variant="reverse">
             Request Quote

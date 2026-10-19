@@ -11,7 +11,6 @@ import { LifestyleBanner } from "@/components/home/lifestyle-banner";
 import { RelatedCarousel } from "@/components/home/related-carousel";
 import { TextLink } from "@/components/ui/text-link";
 import { ProcessSteps } from "@/components/ui/process-steps";
-import { CertificationEmptyState } from "@/components/ui/certification-card";
 import { BlogCard } from "@/components/blog/blog-card";
 import { CtaBanner } from "@/components/ui/cta-banner";
 import { getCategories, getPublishedProducts } from "@/lib/products/data";
@@ -77,24 +76,6 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      <Section size="md" tone="stone">
-        <div className="flex flex-col gap-8">
-          <SectionHeader
-            eyebrow="Quality & Compliance"
-            title="Certifications & compliance status"
-            description="We only list certifications once verified. Nothing is published here until confirmed."
-          />
-          <Reveal>
-            <CertificationEmptyState />
-          </Reveal>
-          <Reveal delay={0.1}>
-            <TextLink href="/quality-compliance" withArrow tone="leather" className="w-fit">
-              View Quality & Compliance
-            </TextLink>
-          </Reveal>
-        </div>
-      </Section>
-
       {featuredPost && (
         <Section size="md">
           <div className="flex flex-col gap-8">
@@ -114,7 +95,7 @@ export default async function HomePage() {
       <CtaBanner
         eyebrow="Start a Project"
         title="Have specifications ready?"
-        description="Send us your product details, quantities, and timeline — we'll follow up with a tailored quote."
+        description="Send us your product details, quantities, and timeline. We'll follow up with a tailored quote."
         actions={
           <ButtonLink href={requestQuoteHref} variant="reverse">
             Request Quote

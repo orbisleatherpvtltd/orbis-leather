@@ -41,7 +41,7 @@ export default async function ProductsPage() {
             as="h1"
             eyebrow="Wholesale & Private Label"
             title="Genuine leather jackets, built for your program"
-            description="Browse our range of manufactured styles and custom programs. Pricing is confirmed per order — request a quote for any product."
+            description="Browse our range of manufactured styles and custom programs. Pricing is confirmed per order. Request a quote for any product."
           />
           <StaggerGroup className="flex flex-wrap gap-3">
             {categories.map((category) => (
@@ -64,7 +64,7 @@ export default async function ProductsPage() {
       <CtaBanner
         eyebrow="Don't See What You Need?"
         title="We build custom and private-label programs too"
-        description="Share your designs, materials, and volumes — our team will follow up with a tailored quote."
+        description="Share your designs, materials, and volumes. Our team will follow up with a tailored quote."
         actions={
           <ButtonLink href={requestQuoteHref} variant="reverse">
             Request Quote

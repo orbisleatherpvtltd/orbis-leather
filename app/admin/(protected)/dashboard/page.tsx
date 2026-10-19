@@ -87,7 +87,7 @@ export default async function AdminDashboardPage() {
                 <tr key={inquiry.id} className="border-b border-ink/5 last:border-0">
                   <td className="px-4 py-3 font-medium text-ink">
                     {inquiry.name}
-                    {inquiry.companyName ? ` — ${inquiry.companyName}` : ""}
+                    {inquiry.companyName ? ` - ${inquiry.companyName}` : ""}
                   </td>
                   <td className="px-4 py-3 text-ink/60">{inquiry.type}</td>
                   <td className="px-4 py-3">

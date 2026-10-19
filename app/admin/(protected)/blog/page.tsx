@@ -42,12 +42,12 @@ export default async function AdminBlogPage() {
                     </Badge>
                   )}
                 </td>
-                <td className="px-4 py-3 text-ink/60">{post.category?.name ?? "—"}</td>
+                <td className="px-4 py-3 text-ink/60">{post.category?.name ?? "-"}</td>
                 <td className="px-4 py-3">
                   <Badge variant={post.status === "PUBLISHED" ? "ink" : "outline"}>{post.status}</Badge>
                 </td>
                 <td className="px-4 py-3 text-ink/60">
-                  {post.publishedAt ? post.publishedAt.toLocaleDateString() : "—"}
+                  {post.publishedAt ? post.publishedAt.toLocaleDateString() : "-"}
                 </td>
                 <td className="px-4 py-3">
                   <div className="flex items-center justify-end gap-3">

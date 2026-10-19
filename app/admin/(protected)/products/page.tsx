@@ -42,7 +42,7 @@ export default async function AdminProductsPage() {
                     </Badge>
                   )}
                 </td>
-                <td className="px-4 py-3 text-ink/60">{product.category?.name ?? "—"}</td>
+                <td className="px-4 py-3 text-ink/60">{product.category?.name ?? "-"}</td>
                 <td className="px-4 py-3">
                   <Badge variant={product.status === "PUBLISHED" ? "ink" : "outline"}>
                     {product.status}

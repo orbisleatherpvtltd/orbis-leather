@@ -136,7 +136,7 @@ export default async function AdminInquiriesPage({
               <div className="flex flex-col">
                 <span className="font-medium text-ink">
                   {inquiry.name}
-                  {inquiry.companyName ? ` — ${inquiry.companyName}` : ""}
+                  {inquiry.companyName ? ` - ${inquiry.companyName}` : ""}
                 </span>
                 <span className="text-body-sm text-ink/60">
                   {inquiry.email} · {inquiry.type} · {inquiry.createdAt.toLocaleDateString()}
@@ -149,19 +149,19 @@ export default async function AdminInquiriesPage({
               <dl className="grid gap-4 text-body-sm sm:grid-cols-2">
                 <div>
                   <dt className="text-caption uppercase tracking-wide text-ink/60">Country</dt>
-                  <dd className="text-ink">{inquiry.country ?? "—"}</dd>
+                  <dd className="text-ink">{inquiry.country ?? "-"}</dd>
                 </div>
                 <div>
                   <dt className="text-caption uppercase tracking-wide text-ink/60">Phone</dt>
-                  <dd className="text-ink">{inquiry.phone ?? "—"}</dd>
+                  <dd className="text-ink">{inquiry.phone ?? "-"}</dd>
                 </div>
                 <div>
                   <dt className="text-caption uppercase tracking-wide text-ink/60">Product Interest</dt>
-                  <dd className="text-ink">{inquiry.productInterest ?? "—"}</dd>
+                  <dd className="text-ink">{inquiry.productInterest ?? "-"}</dd>
                 </div>
                 <div>
                   <dt className="text-caption uppercase tracking-wide text-ink/60">Quantity Estimate</dt>
-                  <dd className="text-ink">{inquiry.quantityEstimate ?? "—"}</dd>
+                  <dd className="text-ink">{inquiry.quantityEstimate ?? "-"}</dd>
                 </div>
                 <div>
                   <dt className="text-caption uppercase tracking-wide text-ink/60">Submitted</dt>
@@ -175,7 +175,7 @@ export default async function AdminInquiriesPage({
                 )}
                 <div>
                   <dt className="text-caption uppercase tracking-wide text-ink/60">IP Address</dt>
-                  <dd className="text-ink">{inquiry.ipAddress ?? "—"}</dd>
+                  <dd className="text-ink">{inquiry.ipAddress ?? "-"}</dd>
                 </div>
               </dl>
 

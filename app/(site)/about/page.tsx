@@ -17,7 +17,7 @@ import { dummyImage } from "@/lib/dummy-images";
 export const metadata: Metadata = buildMetadata({
   title: "About",
   description:
-    "25 years of leather manufacturing experience, based in Pakistan — the story behind ORBIS Signature Leather.",
+    "25 years of leather manufacturing experience, based in Pakistan, the story behind ORBIS Signature Leather.",
   path: "/about",
 });
 
@@ -84,7 +84,7 @@ export default function AboutPage() {
             </h2>
             <p className="text-body-lg text-ink/70">
               With 25 years of manufacturing experience, our team has developed deep expertise
-              across cutting, stitching, quality control, and export documentation — refined
+              across cutting, stitching, quality control, and export documentation, refined
               through decades of production for international markets.
             </p>
             <p className="text-body-lg text-ink/70">
@@ -112,7 +112,7 @@ export default function AboutPage() {
         <SectionHeader
           eyebrow="Manufacturing Journey"
           title="How we got here"
-          description="A conservative overview of our growth — from a small workshop to a full-scale manufacturing operation."
+          description="A conservative overview of our growth, from a small workshop to a full-scale manufacturing operation."
           className="mb-12"
         />
         <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

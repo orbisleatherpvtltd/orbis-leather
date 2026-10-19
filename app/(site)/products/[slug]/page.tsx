@@ -149,7 +149,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       <CtaBanner
         eyebrow="Ready to Move Forward?"
         title={`Request a quote for the ${product.name}`}
-        description="Share your target volumes and specifications — our team will follow up with pricing and lead time."
+        description="Share your target volumes and specifications. Our team will follow up with pricing and lead time."
         actions={
           <ButtonLink href={`${requestQuoteHref}?product=${product.slug}`} variant="reverse">
             Request Quote

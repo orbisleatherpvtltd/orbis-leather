@@ -32,7 +32,7 @@ export default async function AdminTestimonialsPage() {
               <tr key={testimonial.id} className="border-b border-ink/5 last:border-0">
                 <td className="px-4 py-3 font-medium text-ink">{testimonial.companyName}</td>
                 <td className="px-4 py-3 text-ink/60">
-                  {testimonial.personName ?? "—"}
+                  {testimonial.personName ?? "-"}
                   {testimonial.role ? `, ${testimonial.role}` : ""}
                 </td>
                 <td className="px-4 py-3">
@@ -70,7 +70,7 @@ export default async function AdminTestimonialsPage() {
             {testimonials.length === 0 && (
               <tr>
                 <td colSpan={4} className="px-4 py-8 text-center text-ink/60">
-                  No testimonials yet. Add real client feedback — no placeholder quotes.
+                  No testimonials yet. Add real client feedback. No placeholder quotes.
                 </td>
               </tr>
             )}

@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: BlogCategoryPageProps): Promi
   }
 
   return buildMetadata({
-    title: `${category.name} — Blog & Resources`,
+    title: `${category.name} - Blog & Resources`,
     description: category.description || `Articles in ${category.name} for wholesale leather buyers.`,
     path: `/blog/category/${category.slug}`,
   });

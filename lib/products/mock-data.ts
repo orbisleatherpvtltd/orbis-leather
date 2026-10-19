@@ -5,7 +5,7 @@ const men = productCategories[0];
 const women = productCategories[1];
 const custom = productCategories[2];
 
-const STANDARD_MOQ = "Varies by style and customization — confirmed at quote stage.";
+const STANDARD_MOQ = "Varies by style and customization - confirmed at quote stage.";
 const STANDARD_LEAD_TIME =
   "Confirmed at quote stage, based on order volume and customization.";
 
@@ -18,7 +18,7 @@ const STANDARD_CUSTOMIZATION = [
 
 /**
  * Mock product catalog. This file is the only thing Phase 6 needs to replace
- * with real Prisma queries — lib/products/data.ts already returns Promises
+ * with real Prisma queries - lib/products/data.ts already returns Promises
  * and consumers only depend on the `Product` type, not this data source.
  */
 export const mockProducts: Product[] = [
@@ -47,7 +47,7 @@ export const mockProducts: Product[] = [
       { label: "Available Sizes", value: "XS–3XL" },
     ],
     customizationOptions: STANDARD_CUSTOMIZATION,
-    seoTitle: "Classic Biker Jacket — Genuine Leather Manufacturing",
+    seoTitle: "Classic Biker Jacket - Genuine Leather Manufacturing",
     seoDescription:
       "Wholesale and private-label Classic Biker Jacket in full-grain cowhide leather. Request a quote for your specifications and volumes.",
     createdAt: "2026-01-12T00:00:00.000Z",
@@ -77,7 +77,7 @@ export const mockProducts: Product[] = [
       { label: "Available Sizes", value: "S–3XL" },
     ],
     customizationOptions: STANDARD_CUSTOMIZATION,
-    seoTitle: "Aviator Bomber Jacket — Genuine Leather Manufacturing",
+    seoTitle: "Aviator Bomber Jacket - Genuine Leather Manufacturing",
     seoDescription:
       "Wholesale and private-label Aviator Bomber Jacket in top-grain sheepskin leather. Request a quote for your specifications and volumes.",
     createdAt: "2026-01-20T00:00:00.000Z",
@@ -90,7 +90,7 @@ export const mockProducts: Product[] = [
     category: men,
     shortDescription: "A minimalist, collarless silhouette in full-grain cowhide.",
     description:
-      "The Café Racer Jacket offers a clean, collarless design in durable full-grain cowhide — a versatile style for brands seeking a modern, minimal outerwear option.",
+      "The Café Racer Jacket offers a clean, collarless design in durable full-grain cowhide - a versatile style for brands seeking a modern, minimal outerwear option.",
     leatherType: "Full-grain cowhide leather",
     moq: STANDARD_MOQ,
     leadTime: STANDARD_LEAD_TIME,
@@ -107,7 +107,7 @@ export const mockProducts: Product[] = [
       { label: "Available Sizes", value: "XS–2XL" },
     ],
     customizationOptions: STANDARD_CUSTOMIZATION,
-    seoTitle: "Café Racer Jacket — Genuine Leather Manufacturing",
+    seoTitle: "Café Racer Jacket - Genuine Leather Manufacturing",
     seoDescription:
       "Wholesale and private-label Café Racer Jacket in full-grain cowhide leather. Request a quote for your specifications and volumes.",
     createdAt: "2026-02-02T00:00:00.000Z",
@@ -120,7 +120,7 @@ export const mockProducts: Product[] = [
     category: women,
     shortDescription: "A tailored moto silhouette in soft lambskin leather.",
     description:
-      "The Fitted Moto Jacket is cut close to the body in soft lambskin leather, offering a refined take on a classic moto style — suited to both wholesale and private-label programs.",
+      "The Fitted Moto Jacket is cut close to the body in soft lambskin leather, offering a refined take on a classic moto style - suited to both wholesale and private-label programs.",
     leatherType: "Lambskin leather",
     moq: STANDARD_MOQ,
     leadTime: STANDARD_LEAD_TIME,
@@ -137,7 +137,7 @@ export const mockProducts: Product[] = [
       { label: "Available Sizes", value: "XXS–XL" },
     ],
     customizationOptions: STANDARD_CUSTOMIZATION,
-    seoTitle: "Fitted Moto Jacket — Genuine Leather Manufacturing",
+    seoTitle: "Fitted Moto Jacket - Genuine Leather Manufacturing",
     seoDescription:
       "Wholesale and private-label Fitted Moto Jacket in lambskin leather. Request a quote for your specifications and volumes.",
     createdAt: "2026-01-15T00:00:00.000Z",
@@ -150,7 +150,7 @@ export const mockProducts: Product[] = [
     category: women,
     shortDescription: "An elevated longline silhouette in top-grain cowhide.",
     description:
-      "The Longline Leather Trench brings a tailored, floor-grazing silhouette to genuine leather outerwear — a statement piece for premium private-label collections.",
+      "The Longline Leather Trench brings a tailored, floor-grazing silhouette to genuine leather outerwear - a statement piece for premium private-label collections.",
     leatherType: "Top-grain cowhide leather",
     moq: STANDARD_MOQ,
     leadTime: STANDARD_LEAD_TIME,
@@ -167,7 +167,7 @@ export const mockProducts: Product[] = [
       { label: "Available Sizes", value: "XS–2XL" },
     ],
     customizationOptions: STANDARD_CUSTOMIZATION,
-    seoTitle: "Longline Leather Trench — Genuine Leather Manufacturing",
+    seoTitle: "Longline Leather Trench - Genuine Leather Manufacturing",
     seoDescription:
       "Wholesale and private-label Longline Leather Trench in top-grain cowhide leather. Request a quote for your specifications and volumes.",
     createdAt: "2026-02-10T00:00:00.000Z",
@@ -194,7 +194,7 @@ export const mockProducts: Product[] = [
       { label: "Available Sizes", value: "XXS–XL" },
     ],
     customizationOptions: STANDARD_CUSTOMIZATION,
-    seoTitle: "Cropped Leather Jacket — Genuine Leather Manufacturing",
+    seoTitle: "Cropped Leather Jacket - Genuine Leather Manufacturing",
     seoDescription:
       "Wholesale and private-label Cropped Leather Jacket in lambskin leather. Request a quote for your specifications and volumes.",
     createdAt: "2026-02-18T00:00:00.000Z",
@@ -207,9 +207,9 @@ export const mockProducts: Product[] = [
     category: custom,
     shortDescription: "Full OEM development of your own leather jacket designs.",
     description:
-      "Our Custom Leather Jacket Program covers full OEM development — from pattern-making through sampling and production — built entirely around your designs, materials, and specifications.",
-    leatherType: "Buyer-specified — multiple leather types available",
-    moq: "Program-based — confirmed at quote stage depending on scope.",
+      "Our Custom Leather Jacket Program covers full OEM development - from pattern-making through sampling and production - built entirely around your designs, materials, and specifications.",
+    leatherType: "Buyer-specified - multiple leather types available",
+    moq: "Program-based - confirmed at quote stage depending on scope.",
     leadTime: STANDARD_LEAD_TIME,
     featured: true,
     status: "PUBLISHED",
@@ -228,7 +228,7 @@ export const mockProducts: Product[] = [
       "Custom hardware, lining, and branding",
       "Sampling and fit iterations",
     ],
-    seoTitle: "Custom Leather Jacket Program — OEM Manufacturing",
+    seoTitle: "Custom Leather Jacket Program - OEM Manufacturing",
     seoDescription:
       "OEM custom leather jacket development and manufacturing. Share your designs and specifications to request a tailored quote.",
     createdAt: "2026-01-05T00:00:00.000Z",
@@ -241,9 +241,9 @@ export const mockProducts: Product[] = [
     category: custom,
     shortDescription: "Ready-to-brand outerwear styles for private label partners.",
     description:
-      "The Private Label Outerwear Program offers a curated set of base outerwear styles that can be branded, adjusted, and packaged under your own label — a faster path to market than full custom development.",
-    leatherType: "Buyer-specified — multiple leather types available",
-    moq: "Program-based — confirmed at quote stage depending on scope.",
+      "The Private Label Outerwear Program offers a curated set of base outerwear styles that can be branded, adjusted, and packaged under your own label - a faster path to market than full custom development.",
+    leatherType: "Buyer-specified - multiple leather types available",
+    moq: "Program-based - confirmed at quote stage depending on scope.",
     leadTime: STANDARD_LEAD_TIME,
     featured: false,
     status: "PUBLISHED",
@@ -260,7 +260,7 @@ export const mockProducts: Product[] = [
       "Minor fit and material adjustments",
       "Size range adjustment",
     ],
-    seoTitle: "Private Label Outerwear Program — Leather Manufacturing",
+    seoTitle: "Private Label Outerwear Program - Leather Manufacturing",
     seoDescription:
       "Private label leather outerwear program with custom branding and packaging. Request a quote to get started.",
     createdAt: "2026-01-08T00:00:00.000Z",

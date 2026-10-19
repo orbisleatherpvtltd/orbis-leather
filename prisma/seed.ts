@@ -17,7 +17,7 @@ function generatePassword(): string {
 async function seedAdminUser() {
   const existing = await prisma.adminUser.findUnique({ where: { email: ADMIN_EMAIL } });
   if (existing) {
-    console.log(`[SEED] AdminUser "${ADMIN_EMAIL}" already exists — leaving password unchanged.`);
+    console.log(`[SEED] AdminUser "${ADMIN_EMAIL}" already exists - leaving password unchanged.`);
     return;
   }
 
@@ -33,7 +33,7 @@ async function seedAdminUser() {
     },
   });
 
-  console.log("[SEED] Created AdminUser. Save these credentials now — the password is shown only once:");
+  console.log("[SEED] Created AdminUser. Save these credentials now - the password is shown only once:");
   console.log(`[SEED]   email:    ${ADMIN_EMAIL}`);
   console.log(`[SEED]   password: ${password}`);
 }
@@ -63,7 +63,7 @@ async function seedProducts() {
       where: { slug: product.category.slug },
     });
     if (!category) {
-      throw new Error(`[SEED] Missing product category "${product.category.slug}" — run seedProductCategories() first.`);
+      throw new Error(`[SEED] Missing product category "${product.category.slug}" - run seedProductCategories() first.`);
     }
 
     let row = await prisma.product.findUnique({ where: { slug: product.slug } });
@@ -197,7 +197,7 @@ async function main() {
   await seedBlogCategories();
   await seedBlogPosts();
   await seedFaqItems();
-  console.log("[SEED] Skipping testimonials — no fake testimonials are seeded. Add real ones via /admin/testimonials.");
+  console.log("[SEED] Skipping testimonials - no fake testimonials are seeded. Add real ones via /admin/testimonials.");
   console.log("[SEED] Done.");
 }
 

@@ -65,7 +65,7 @@ export async function BlogListing({ category, q, page, basePath, breadcrumbLabel
             as="h1"
             eyebrow="Blog & Resources"
             title="Leather manufacturing knowledge for wholesale buyers"
-            description="Articles on materials, sourcing, and care — written for teams evaluating a wholesale or private-label program."
+            description="Articles on materials, sourcing, and care, written for teams evaluating a wholesale or private-label program."
           />
 
           <StaggerGroup className="flex flex-wrap gap-3">

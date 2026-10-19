@@ -7,7 +7,6 @@ export const primaryNav: NavItem[] = [
   { label: "About", href: "/about" },
   { label: "Capabilities", href: "/capabilities" },
   { label: "Products", href: "/products" },
-  { label: "Quality", href: "/quality-compliance" },
   { label: "Blog / Resources", href: "/blog" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
@@ -43,7 +42,7 @@ export const siteConfig = {
     number: "923334544557",
     href: "https://wa.me/923334544557?text=Hi%20ORBIS%2C%20I%20would%20like%20to%20ask%20about%20leather%20jackets%20(MOQ%205%20per%20style).",
   },
-  // No real social profile URLs yet — keep empty so the footer hides the
+  // No real social profile URLs yet - keep empty so the footer hides the
   // icons rather than linking to dead "#" placeholders. Repopulate once the
   // owner provides real Instagram/LinkedIn/Facebook URLs, and add them to
   // organizationJsonLd()'s `sameAs` in lib/seo/schema.ts at the same time.

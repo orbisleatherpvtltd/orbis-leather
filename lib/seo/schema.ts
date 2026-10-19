@@ -1,7 +1,7 @@
 import type { BreadcrumbItem } from "@/components/ui/breadcrumb";
 import { siteConfig, siteUrl } from "@/lib/site-config";
 
-// `sameAs` is omitted until siteConfig.social has real profile URLs — see the
+// `sameAs` is omitted until siteConfig.social has real profile URLs - see the
 // comment on that field in lib/site-config.ts.
 export function organizationJsonLd() {
   return {
@@ -33,7 +33,7 @@ export function websiteJsonLd() {
   };
 }
 
-// No `offers` block — public per-unit pricing isn't published (priced per
+// No `offers` block - public per-unit pricing isn't published (priced per
 // order at quote stage), and Product schema doesn't require one.
 export function productJsonLd(product: {
   name: string;

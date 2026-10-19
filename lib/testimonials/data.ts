@@ -3,7 +3,7 @@ import type { Testimonial } from "@/lib/testimonials/types";
 
 /**
  * Abstract testimonials data-access layer. No site-facing section consumes
- * this yet — the homepage itself hasn't been designed in any prior phase —
+ * this yet - the homepage itself hasn't been designed in any prior phase -
  * but the admin CRUD and this layer are ready for whichever future phase
  * adds a testimonials section.
  */

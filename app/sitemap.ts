@@ -13,7 +13,6 @@ const staticRoutes = [
   "/products/mens-leather-jackets",
   "/products/womens-leather-jackets",
   "/products/custom-private-label",
-  "/quality-compliance",
   "/blog",
   "/faq",
   "/contact",
@@ -33,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     [productSlugs, postSlugs] = await Promise.all([getProductSlugs(), getPostSlugs()]);
   } catch (error) {
-    console.error("Failed to load slugs for sitemap — falling back to static routes only:", error);
+    console.error("Failed to load slugs for sitemap, falling back to static routes only:", error);
     return staticEntries;
   }
 

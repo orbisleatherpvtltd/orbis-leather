@@ -40,7 +40,7 @@ export default async function FaqPage() {
             as="h1"
             eyebrow="Before You Reach Out"
             title="Common questions about working with us"
-            description="Exact terms are confirmed per order — the answers below are general guidance. For specifics, send us your project details."
+            description="Exact terms are confirmed per order. The answers below are general guidance. For specifics, send us your project details."
           />
         </div>
       </Section>

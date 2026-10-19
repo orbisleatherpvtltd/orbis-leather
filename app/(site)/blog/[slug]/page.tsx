@@ -104,7 +104,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       <BlogCTA
         title={`Have a question about ${post.title}?`}
-        description="Reach out and our team will follow up — or request a quote directly for your project."
+        description="Reach out and our team will follow up, or request a quote directly for your project."
         className="my-8 md:my-12"
       />
     </>

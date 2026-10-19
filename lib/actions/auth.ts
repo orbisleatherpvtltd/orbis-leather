@@ -38,7 +38,7 @@ export async function login(
   };
 
   // Fixed dummy hash so an unknown email still pays the scrypt cost paid by a
-  // known email with the wrong password — avoids a login timing side-channel
+  // known email with the wrong password - avoids a login timing side-channel
   // that would otherwise let an attacker enumerate valid admin emails.
   const DUMMY_HASH =
     "00000000000000000000000000000000:00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";

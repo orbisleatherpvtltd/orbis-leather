@@ -28,7 +28,7 @@ export function LifestyleBanner({ product }: { product: Product | null }) {
           </h2>
           <p className="max-w-md text-body-lg text-paper/75">
             {product
-              ? `${product.name} — ${product.shortDescription}`
+              ? `${product.name}: ${product.shortDescription}`
               : "Shearling-collar bombers, oiled lambskin, and quilted linings, produced to your specification."}
           </p>
 

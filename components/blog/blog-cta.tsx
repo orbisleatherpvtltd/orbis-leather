@@ -5,7 +5,7 @@ import { requestQuoteHref } from "@/lib/site-config";
 export function BlogCTA({
   eyebrow = "Ready to Start a Program?",
   title = "Talk to our team about your leather manufacturing project",
-  description = "Share your specifications and volumes — our team will follow up with a tailored quote.",
+  description = "Share your specifications and volumes. Our team will follow up with a tailored quote.",
   className = "my-8 md:my-12",
 }: {
   eyebrow?: string;
