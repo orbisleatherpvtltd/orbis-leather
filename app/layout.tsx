@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import { siteUrl } from "@/lib/site-config";
+import { siteConfig, siteUrl } from "@/lib/site-config";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -11,24 +11,24 @@ const poppins = Poppins({
 });
 
 const description =
-  "ORBIS Signature Leather — premium B2B wholesale leather manufacturing and private label production.";
+  "ORBIS Leather — premium B2B wholesale leather manufacturing and private label production.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "ORBIS Signature Leather",
-    template: "%s | ORBIS",
+    default: siteConfig.brandName,
+    template: `%s - ${siteConfig.brandName}`,
   },
   description,
   openGraph: {
-    title: "ORBIS Signature Leather",
+    title: siteConfig.brandName,
     description,
-    siteName: "ORBIS Signature Leather",
+    siteName: siteConfig.brandName,
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "ORBIS Signature Leather",
+    title: siteConfig.brandName,
     description,
   },
   ...(process.env.GOOGLE_SITE_VERIFICATION

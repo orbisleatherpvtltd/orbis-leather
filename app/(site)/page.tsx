@@ -25,7 +25,7 @@ import { Reveal } from "@/components/motion/reveal";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Leather Jacket Manufacturer Pakistan | Private Label | ORBIS",
+  title: "ORBIS Leather - Leather Jacket Manufacturer Pakistan",
   description:
     "ORBIS is a leather jacket manufacturer in Pakistan serving wholesale and private label brands with custom specs, low MOQs, and fast turnaround. Request a quote.",
   path: "/",

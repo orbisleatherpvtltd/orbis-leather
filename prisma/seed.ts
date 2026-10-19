@@ -164,9 +164,17 @@ async function seedBlogPosts() {
 
 async function seedFaqItems() {
   let created = 0;
+  let updated = 0;
   for (const [index, entry] of faqEntries.entries()) {
     const existing = await prisma.faqItem.findFirst({ where: { question: entry.question } });
-    if (existing) continue;
+    if (existing) {
+      await prisma.faqItem.update({
+        where: { id: existing.id },
+        data: { answer: entry.answer, sortOrder: index, isPublished: true },
+      });
+      updated += 1;
+      continue;
+    }
 
     await prisma.faqItem.create({
       data: {
@@ -178,7 +186,7 @@ async function seedFaqItems() {
     });
     created += 1;
   }
-  console.log(`[SEED] Created ${created} FAQ items (isPublished: true).`);
+  console.log(`[SEED] Created ${created} FAQ items and updated ${updated} (isPublished: true).`);
 }
 
 async function main() {

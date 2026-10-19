@@ -42,7 +42,7 @@ export function Header() {
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="flex items-center justify-between gap-6"
           >
-            <Link href="/" aria-label={siteConfig.name} className="shrink-0">
+            <Link href="/" aria-label={siteConfig.brandName} className="shrink-0">
               <Logo layout="horizontal" />
             </Link>
 

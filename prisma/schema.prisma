@@ -160,6 +160,7 @@ model Inquiry {
   productInterest  String?
   quantityEstimate String?
   message          String
+  details          Json?
   status           InquiryStatus @default(NEW)
   internalNotes    String?
   ipAddress        String?

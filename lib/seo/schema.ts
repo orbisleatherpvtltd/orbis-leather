@@ -7,10 +7,11 @@ export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: siteConfig.name,
+    name: siteConfig.brandName,
+    alternateName: siteConfig.alternateName,
     url: siteUrl,
     description: siteConfig.description,
-    logo: new URL("/images/Orbis.logo.png", siteUrl).toString(),
+    logo: new URL("/images/orbis_logo.png", siteUrl).toString(),
     email: siteConfig.contact.email,
     telephone: siteConfig.contact.phone,
     address: {
@@ -26,7 +27,8 @@ export function websiteJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: siteConfig.name,
+    name: siteConfig.brandName,
+    alternateName: siteConfig.alternateName,
     url: siteUrl,
   };
 }
@@ -62,18 +64,6 @@ export function productJsonLd(product: {
           },
         }
       : {}),
-  };
-}
-
-export function faqPageJsonLd(entries: { question: string; answer: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: entries.map((entry) => ({
-      "@type": "Question",
-      name: entry.question,
-      acceptedAnswer: { "@type": "Answer", text: entry.answer },
-    })),
   };
 }
 

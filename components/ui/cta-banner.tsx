@@ -32,7 +32,12 @@ export function CtaBanner({
         <Reveal className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
           <div className="flex flex-col gap-3">
             {eyebrow && (
-              <span className="text-eyebrow font-medium uppercase tracking-[0.16em] text-leather">
+              <span
+                className={cn(
+                  "text-eyebrow font-medium uppercase tracking-[0.16em]",
+                  tone === "ink" ? "text-paper/80" : "text-leather",
+                )}
+              >
                 {eyebrow}
               </span>
             )}

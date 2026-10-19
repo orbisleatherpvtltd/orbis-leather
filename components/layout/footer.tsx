@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
-import { CtaBanner } from "@/components/ui/cta-banner";
-import { ButtonLink } from "@/components/ui/button";
 import { Logo } from "@/components/logo/logo";
 import { FacebookIcon, InstagramIcon, LinkedInIcon } from "@/components/icons";
 import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
-import { legalNav, primaryNav, requestQuoteHref, siteConfig } from "@/lib/site-config";
+import { FooterProgramCta } from "@/components/layout/footer-program-cta";
+import { legalNav, primaryNav, siteConfig } from "@/lib/site-config";
 
 const socialIcons: Record<string, typeof InstagramIcon> = {
   Instagram: InstagramIcon,
@@ -19,20 +18,7 @@ export function Footer() {
 
   return (
     <footer className="rounded-t-[2.5rem] bg-ink text-paper">
-      <div className="pt-14 md:pt-16">
-        <CtaBanner
-          tone="ink"
-          eyebrow="Wholesale Inquiries"
-          title="Start your leather program with ORBIS"
-          description="Tell us about your specifications and volumes — our team will follow up with a tailored quote."
-          actions={
-            <ButtonLink href={requestQuoteHref} variant="reverse">
-              Request Quote
-            </ButtonLink>
-          }
-          className="!mx-auto bg-paper/[0.06] py-14 ring-1 ring-paper/10 md:py-16"
-        />
-      </div>
+      <FooterProgramCta />
 
       <Container className="py-16">
         <StaggerGroup className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr_1fr]">

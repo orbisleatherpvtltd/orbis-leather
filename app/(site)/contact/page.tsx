@@ -12,9 +12,11 @@ import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Contact",
-  description: "Get in touch with ORBIS Signature Leather for wholesale and private-label inquiries.",
+  title: "Contact ORBIS | Leather Jacket Manufacturer in Karachi",
+  description:
+    "Contact ORBIS, a leather jacket manufacturer in Karachi, Pakistan. Send your design and quantity (from 5 pieces per style) for a quote.",
   path: "/contact",
+  titleMode: "absolute",
 });
 
 export default function ContactPage() {
@@ -32,8 +34,8 @@ export default function ContactPage() {
         <SectionHeader
           as="h1"
           eyebrow="Contact"
-          title="Let's talk about your leather program"
-          description="Reach out directly, or send a message below — our team replies within 24 hours."
+          title="Let's talk about your leather jacket order"
+          description="Send us your design and quantity, or ask a quick question. Orders start from 5 pieces per style. Our team replies within 1 business day."
         />
       </div>
 
@@ -102,9 +104,9 @@ export default function ContactPage() {
         </StaggerGroup>
 
         <Reveal direction="left" delay={0.1} className="rounded-2xl bg-paper p-8 shadow-lg shadow-ink/5 ring-1 ring-ink/5 md:p-10">
-          <h2 className="text-h4 font-bold text-ink">Send a Message</h2>
+          <h2 className="text-h4 font-bold text-ink">Tell us about your project</h2>
           <p className="mt-2 text-body text-ink/70">
-            Tell us a bit about your inquiry and we&apos;ll get back to you.
+            The more you tell us, the faster we can quote. Fields marked * are required.
           </p>
           <InquiryForm variant="contact" className="mt-8" />
         </Reveal>

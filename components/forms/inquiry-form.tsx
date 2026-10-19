@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useState } from "react";
-import type { InquiryType } from "@/app/generated/prisma/enums";
+import Link from "next/link";
 import { AlertIcon, CheckIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { FormField } from "@/components/ui/form/form-field";
@@ -9,14 +9,18 @@ import { Input } from "@/components/ui/form/input";
 import { Select } from "@/components/ui/form/select";
 import { Textarea } from "@/components/ui/form/textarea";
 import { submitInquiry, type InquiryFormState } from "@/lib/actions/inquiry";
+import {
+  BUYER_TYPES,
+  DELIVERY_OPTIONS,
+  EMBROIDERY_PLACEMENTS,
+  GENERAL_INQUIRY,
+  HEARD_ABOUT_OPTIONS,
+  INQUIRY_TYPES,
+  LABEL_OPTIONS,
+  SAMPLE_OPTIONS,
+} from "@/lib/inquiries/fields";
+import { COUNTRIES } from "@/lib/inquiries/countries";
 import { cn } from "@/lib/utils";
-
-const productInterestOptions = [
-  "Men's Leather Jackets",
-  "Women's Leather Jackets",
-  "Custom / Private Label",
-  "Other",
-];
 
 const initialInquiryState: InquiryFormState = {
   status: "idle",
@@ -26,30 +30,66 @@ const initialInquiryState: InquiryFormState = {
 
 export type InquiryFormVariant = "contact" | "quote";
 
+function ChoiceGroup({
+  name,
+  options,
+  required,
+  value,
+  onChange,
+}: {
+  name: string;
+  options: readonly string[];
+  required?: boolean;
+  value?: string;
+  onChange?: (value: string) => void;
+}) {
+  return (
+    <div className="flex flex-col gap-2">
+      {options.map((option) => (
+        <label key={option} className="flex items-center gap-3 text-body text-ink/80">
+          <input
+            type="radio"
+            name={name}
+            value={option}
+            required={required}
+            checked={value === undefined ? undefined : value === option}
+            onChange={onChange ? () => onChange(option) : undefined}
+            className="h-4 w-4 accent-leather"
+          />
+          {option}
+        </label>
+      ))}
+    </div>
+  );
+}
+
 export function InquiryForm({
   variant,
   className,
-  defaultProductInterest,
   defaultMessage,
 }: {
   variant: InquiryFormVariant;
   className?: string;
-  defaultProductInterest?: string;
   defaultMessage?: string;
 }) {
-  const type: InquiryType = variant === "quote" ? "QUOTE" : "CONTACT";
-  const action = submitInquiry.bind(null, type);
   const [state, formAction, isPending] = useActionState<InquiryFormState, FormData>(
-    action,
+    submitInquiry,
     initialInquiryState,
   );
   const [formRenderedAt] = useState(() => Date.now().toString());
+  const [enhanced, setEnhanced] = useState(false);
+  const [inquiryType, setInquiryType] = useState(
+    variant === "quote" ? INQUIRY_TYPES[0] : "",
+  );
+  const [embroidery, setEmbroidery] = useState("");
 
   useEffect(() => {
-    if (state.status === "success") {
-      window.gtag?.("event", "generate_lead", { form_name: variant });
-    }
-  }, [state.status, variant]);
+    setEnhanced(true);
+  }, []);
+
+  const showDetails = !enhanced || (inquiryType !== "" && inquiryType !== GENERAL_INQUIRY);
+  const messageRequired = inquiryType === GENERAL_INQUIRY;
+  const showPlacement = !enhanced || embroidery === "Yes";
 
   if (state.status === "success") {
     return (
@@ -84,116 +124,231 @@ export function InquiryForm({
         </div>
       )}
 
-      <FormField id="name" label="Full Name" required errorText={state.fieldErrors.name}>
-        <Input
-          id="name"
-          name="name"
-          type="text"
-          autoComplete="name"
-          required
-          invalid={!!state.fieldErrors.name}
-          aria-invalid={!!state.fieldErrors.name}
-          aria-describedby={state.fieldErrors.name ? "name-error" : undefined}
-        />
+      <FormField id="name" label="Full name" required errorText={state.fieldErrors.name}>
+        <Input id="name" name="name" type="text" autoComplete="name" required invalid={!!state.fieldErrors.name} />
       </FormField>
-
-      {variant === "quote" && (
-        <FormField
-          id="companyName"
-          label="Company Name"
-          required
-          errorText={state.fieldErrors.companyName}
-        >
-          <Input
-            id="companyName"
-            name="companyName"
-            type="text"
-            autoComplete="organization"
-            required
-            invalid={!!state.fieldErrors.companyName}
-            aria-invalid={!!state.fieldErrors.companyName}
-            aria-describedby={state.fieldErrors.companyName ? "companyName-error" : undefined}
-          />
-        </FormField>
-      )}
 
       <div className="grid gap-6 sm:grid-cols-2">
         <FormField id="email" label="Email" required errorText={state.fieldErrors.email}>
-          <Input
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            invalid={!!state.fieldErrors.email}
-            aria-invalid={!!state.fieldErrors.email}
-            aria-describedby={state.fieldErrors.email ? "email-error" : undefined}
-          />
+          <Input id="email" name="email" type="email" autoComplete="email" required invalid={!!state.fieldErrors.email} />
         </FormField>
-        <FormField id="phone" label="Phone" helperText="Optional" errorText={state.fieldErrors.phone}>
-          <Input
-            id="phone"
-            name="phone"
-            type="tel"
-            autoComplete="tel"
-            invalid={!!state.fieldErrors.phone}
-            aria-invalid={!!state.fieldErrors.phone}
-            aria-describedby={state.fieldErrors.phone ? "phone-error" : undefined}
-          />
+        <FormField
+          id="phone"
+          label="Phone or WhatsApp"
+          helperText="Include country code, e.g. +92"
+          errorText={state.fieldErrors.phone}
+        >
+          <Input id="phone" name="phone" type="tel" autoComplete="tel" invalid={!!state.fieldErrors.phone} />
         </FormField>
       </div>
 
-      {variant === "quote" && (
+      <FormField id="companyName" label="Company or brand name" errorText={state.fieldErrors.companyName}>
+        <Input id="companyName" name="companyName" type="text" autoComplete="organization" />
+      </FormField>
+
+      <FormField
+        id="country"
+        label="Country"
+        required
+        helperText="Where should we ship to?"
+        errorText={state.fieldErrors.country}
+      >
+        <Select id="country" name="country" required defaultValue="" invalid={!!state.fieldErrors.country}>
+          <option value="" disabled>
+            Select a country
+          </option>
+          {COUNTRIES.map((country) => (
+            <option key={country} value={country}>
+              {country}
+            </option>
+          ))}
+        </Select>
+      </FormField>
+
+      <FormField id="buyerType" label="I am a" required errorText={state.fieldErrors.buyerType}>
+        <ChoiceGroup name="buyerType" options={BUYER_TYPES} required />
+      </FormField>
+
+      <FormField id="inquiryType" label="Inquiry type" required errorText={state.fieldErrors.inquiryType}>
+        <Select
+          id="inquiryType"
+          name="inquiryType"
+          required
+          value={inquiryType}
+          onChange={(event) => setInquiryType(event.target.value)}
+          invalid={!!state.fieldErrors.inquiryType}
+        >
+          <option value="" disabled>
+            Select an inquiry type
+          </option>
+          {INQUIRY_TYPES.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </Select>
+      </FormField>
+
+      <div className={cn("flex flex-col gap-6", !showDetails && "hidden")}>
+        <FormField id="jacketStyle" label="Jacket style" errorText={state.fieldErrors.jacketStyle}>
+          <Input
+            id="jacketStyle"
+            name="jacketStyle"
+            type="text"
+            placeholder="e.g. biker, bomber, cafe racer, or paste a reference link"
+          />
+        </FormField>
+
         <div className="grid gap-6 sm:grid-cols-2">
-          <FormField id="country" label="Country" helperText="Optional">
-            <Input id="country" name="country" type="text" autoComplete="country-name" />
+          <FormField
+            id="quantityPerStyle"
+            label="Quantity per style"
+            required={showDetails}
+            helperText="Minimum 5 pieces per style"
+            errorText={state.fieldErrors.quantityPerStyle}
+          >
+            <Input
+              id="quantityPerStyle"
+              name="quantityPerStyle"
+              type="number"
+              min={5}
+              step={1}
+              inputMode="numeric"
+              required={showDetails}
+              invalid={!!state.fieldErrors.quantityPerStyle}
+            />
           </FormField>
-          <FormField id="quantityEstimate" label="Estimated Quantity" helperText="e.g. 500 units">
-            <Input id="quantityEstimate" name="quantityEstimate" type="text" />
+          <FormField
+            id="numberOfStyles"
+            label="Number of styles"
+            helperText="How many different styles?"
+            errorText={state.fieldErrors.numberOfStyles}
+          >
+            <Input id="numberOfStyles" name="numberOfStyles" type="number" min={1} step={1} inputMode="numeric" />
           </FormField>
         </div>
-      )}
 
-      {variant === "quote" && (
-        <FormField id="productInterest" label="Product Interest" helperText="Optional">
-          <Select id="productInterest" name="productInterest" defaultValue={defaultProductInterest ?? ""}>
-            <option value="" disabled>
-              Select a category
-            </option>
-            {productInterestOptions.map((option) => (
+        <FormField id="customEmbroidery" label="Custom embroidery?" errorText={state.fieldErrors.customEmbroidery}>
+          <ChoiceGroup
+            name="customEmbroidery"
+            options={["No", "Yes"]}
+            value={embroidery}
+            onChange={setEmbroidery}
+          />
+        </FormField>
+
+        <div className={cn(!showPlacement && "hidden")}>
+          <FormField id="embroideryPlacement" label="Where should the embroidery go?">
+            <div className="flex flex-col gap-2">
+              {EMBROIDERY_PLACEMENTS.map((option) => (
+                <label key={option} className="flex items-center gap-3 text-body text-ink/80">
+                  <input
+                    type="checkbox"
+                    name="embroideryPlacement"
+                    value={option}
+                    className="h-4 w-4 accent-leather"
+                  />
+                  {option}
+                </label>
+              ))}
+            </div>
+          </FormField>
+        </div>
+
+        <FormField id="ownLabels" label="Do you need your own labels or tags?">
+          <ChoiceGroup name="ownLabels" options={LABEL_OPTIONS} />
+        </FormField>
+
+        <FormField id="leatherType" label="Leather type">
+          <Input
+            id="leatherType"
+            name="leatherType"
+            type="text"
+            placeholder='If you know it. Otherwise write "not sure"'
+          />
+        </FormField>
+
+        <FormField id="sampleFirst" label="Sample first?">
+          <ChoiceGroup name="sampleFirst" options={SAMPLE_OPTIONS} />
+        </FormField>
+
+        <FormField id="delivery" label="When do you need delivery?">
+          <Select id="delivery" name="delivery" defaultValue="">
+            <option value="">Select a timeframe</option>
+            {DELIVERY_OPTIONS.map((option) => (
               <option key={option} value={option}>
                 {option}
               </option>
             ))}
           </Select>
         </FormField>
-      )}
+
+        <FormField
+          id="targetPrice"
+          label="Target price per piece (USD)"
+          helperText="Optional. Helps us suggest the right leather and construction."
+          errorText={state.fieldErrors.targetPrice}
+        >
+          <Input id="targetPrice" name="targetPrice" type="number" min={0} step="0.01" inputMode="decimal" />
+        </FormField>
+
+        <FormField
+          id="designFiles"
+          label="Upload design, tech pack or reference images"
+          helperText="Up to 5 files, 10 MB each. PDF, AI, SVG, PNG, JPG"
+          errorText={state.fieldErrors.designFiles}
+        >
+          <Input
+            id="designFiles"
+            name="designFiles"
+            type="file"
+            multiple
+            accept=".pdf,.ai,.svg,.png,.jpg,.jpeg,application/pdf,image/png,image/jpeg,image/svg+xml"
+          />
+        </FormField>
+      </div>
 
       <FormField
         id="message"
-        label={variant === "quote" ? "Message / Project Details" : "Message"}
-        required
+        label="Anything else we should know?"
+        required={messageRequired}
         errorText={state.fieldErrors.message}
       >
         <Textarea
           id="message"
           name="message"
-          required
+          required={messageRequired}
           invalid={!!state.fieldErrors.message}
-          aria-invalid={!!state.fieldErrors.message}
-          aria-describedby={state.fieldErrors.message ? "message-error" : undefined}
           defaultValue={defaultMessage}
         />
       </FormField>
 
-      <Button
-        type="submit"
-        variant="primary"
-        size="lg"
-        disabled={isPending}
-        className="self-start"
-      >
-        {isPending ? "Submitting..." : variant === "quote" ? "Request Quote" : "Send Message"}
+      <FormField id="heardAbout" label="How did you hear about us?">
+        <Select id="heardAbout" name="heardAbout" defaultValue="">
+          <option value="">Select an option</option>
+          {HEARD_ABOUT_OPTIONS.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </Select>
+      </FormField>
+
+      <FormField id="consent" label="Consent" required errorText={state.fieldErrors.consent}>
+        <label className="flex items-start gap-3 text-body text-ink/80">
+          <input type="checkbox" name="consent" value="yes" required className="mt-1 h-4 w-4 accent-leather" />
+          <span>
+            I agree that ORBIS may contact me about this inquiry. See our{" "}
+            <Link href="/privacy-policy" className="link-underline text-leather">
+              Privacy Policy
+            </Link>
+            .
+          </span>
+        </label>
+      </FormField>
+
+      <Button type="submit" variant="primary" size="lg" disabled={isPending} className="self-start">
+        {isPending ? "Submitting..." : "Send Inquiry"}
       </Button>
     </form>
   );

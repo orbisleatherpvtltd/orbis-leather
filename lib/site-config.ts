@@ -28,6 +28,8 @@ export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.orbislea
 
 export const siteConfig = {
   name: "ORBIS Signature Leather",
+  brandName: "ORBIS Leather",
+  alternateName: "ORBIS Signature Leather",
   shortName: "ORBIS",
   tagline: "Signature Leather",
   description:
@@ -39,7 +41,7 @@ export const siteConfig = {
   },
   whatsapp: {
     number: "923334544557",
-    href: "https://wa.me/923334544557",
+    href: "https://wa.me/923334544557?text=Hi%20ORBIS%2C%20I%20would%20like%20to%20ask%20about%20leather%20jackets%20(MOQ%205%20per%20style).",
   },
   // No real social profile URLs yet — keep empty so the footer hides the
   // icons rather than linking to dead "#" placeholders. Repopulate once the

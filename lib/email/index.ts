@@ -1,6 +1,7 @@
 import type { EmailProvider } from "@/lib/email/types";
 import { createResendProvider } from "@/lib/email/resend-provider";
 import { createConsoleProvider } from "@/lib/email/console-provider";
+import { siteConfig, siteUrl } from "@/lib/site-config";
 
 function getEmailProvider(): EmailProvider {
   const apiKey = process.env.RESEND_API_KEY;
@@ -11,15 +12,13 @@ function getEmailProvider(): EmailProvider {
   return createConsoleProvider();
 }
 
-export type InquiryEmailData = {
-  type: "QUOTE" | "CONTACT";
+export type InquiryNotification = {
   name: string;
-  companyName?: string | null;
   email: string;
-  country?: string | null;
-  productInterest?: string | null;
-  quantityEstimate?: string | null;
-  message: string;
+  inquiryType: string;
+  quantityPerStyle?: string;
+  country: string;
+  rows: Array<[string, string]>;
 };
 
 function escapeHtml(value: string): string {
@@ -31,6 +30,13 @@ function escapeHtml(value: string): string {
     .replace(/'/g, "&#39;");
 }
 
+function absoluteFileUrl(value: string) {
+  return value
+    .split("\n")
+    .map((line) => (line.startsWith("/") ? new URL(line, siteUrl).toString() : line))
+    .join("\n");
+}
+
 async function safeSend(subject: string, to: string, html: string, text: string): Promise<void> {
   try {
     await getEmailProvider().send({ to, subject, html, text });
@@ -39,56 +45,46 @@ async function safeSend(subject: string, to: string, html: string, text: string)
   }
 }
 
-export async function notifyAdminOfInquiry(inquiry: InquiryEmailData): Promise<void> {
-  const to = process.env.EMAIL_TO;
-  if (!to) {
-    console.error("EMAIL_TO is not set — skipping admin inquiry notification.");
-    return;
-  }
+export async function notifyAdminOfInquiry(inquiry: InquiryNotification): Promise<void> {
+  const to = process.env.EMAIL_TO || siteConfig.contact.email;
+  const subject = inquiry.quantityPerStyle
+    ? `New inquiry: ${inquiry.inquiryType} - ${inquiry.quantityPerStyle} pcs - ${inquiry.country}`
+    : `New inquiry: ${inquiry.inquiryType} - ${inquiry.country}`;
 
-  const subject =
-    inquiry.type === "QUOTE" ? "New B2B quote request received" : "New contact message received";
+  const rows = inquiry.rows.map(([label, value]) => [
+    label,
+    label === "Design files" ? absoluteFileUrl(value) : value,
+  ]) as Array<[string, string]>;
 
-  const rows: Array<[string, string | null | undefined]> = [
-    ["Name", inquiry.name],
-    ["Company", inquiry.companyName],
-    ["Email", inquiry.email],
-    ["Country", inquiry.country],
-    ["Product Interest", inquiry.productInterest],
-    ["Estimated Quantity", inquiry.quantityEstimate],
-  ];
-
-  const textLines = rows
-    .filter(([, value]) => !!value)
-    .map(([label, value]) => `${label}: ${value}`);
-  textLines.push("", "Message:", inquiry.message);
-
+  const text = rows.map(([label, value]) => `${label}: ${value}`).join("\n");
   const htmlRows = rows
-    .filter(([, value]) => !!value)
     .map(
       ([label, value]) =>
-        `<tr><td style="padding:4px 12px 4px 0;color:#666;">${escapeHtml(label)}</td><td>${escapeHtml(String(value))}</td></tr>`,
+        `<tr><td style="padding:4px 12px 4px 0;color:#666;vertical-align:top;">${escapeHtml(label)}</td><td>${escapeHtml(value).replace(/\n/g, "<br />")}</td></tr>`,
     )
     .join("");
 
-  const html = `
-    <h2>${escapeHtml(subject)}</h2>
-    <table>${htmlRows}</table>
-    <p><strong>Message:</strong></p>
-    <p>${escapeHtml(inquiry.message).replace(/\n/g, "<br />")}</p>
-  `;
-
-  await safeSend(subject, to, html, textLines.join("\n"));
+  const html = `<h2>${escapeHtml(subject)}</h2><table>${htmlRows}</table>`;
+  await safeSend(subject, to, html, text);
 }
 
-export async function sendInquiryConfirmation(inquiry: InquiryEmailData): Promise<void> {
-  const subject = "We received your request";
-  const text = `Hi ${inquiry.name},\n\nThank you for reaching out. We reply within 24 hours.\n\nYour message:\n${inquiry.message}`;
+export async function sendInquiryConfirmation(inquiry: { name: string; email: string }): Promise<void> {
+  const subject = "We received your inquiry | ORBIS";
+  const text = `Hi ${inquiry.name},
+
+Thank you for contacting ORBIS. We have received your inquiry and our team will reply within 1 business day.
+
+If your question is urgent, message us on WhatsApp: ${siteConfig.contact.phone}.
+
+ORBIS
+Leather jacket manufacturer in Karachi, since 2001
+${siteConfig.contact.email}`;
+
   const html = `
     <p>Hi ${escapeHtml(inquiry.name)},</p>
-    <p>Thank you for reaching out. We reply within 24 hours.</p>
-    <p><strong>Your message:</strong></p>
-    <p>${escapeHtml(inquiry.message).replace(/\n/g, "<br />")}</p>
+    <p>Thank you for contacting ORBIS. We have received your inquiry and our team will reply within 1 business day.</p>
+    <p>If your question is urgent, message us on WhatsApp: ${escapeHtml(siteConfig.contact.phone)}.</p>
+    <p>ORBIS<br />Leather jacket manufacturer in Karachi, since 2001<br />${escapeHtml(siteConfig.contact.email)}</p>
   `;
 
   await safeSend(subject, inquiry.email, html, text);

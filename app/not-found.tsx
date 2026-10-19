@@ -7,7 +7,7 @@ export default function NotFound() {
   return (
     <Container>
       <div className="flex min-h-screen flex-col items-center justify-center gap-6 py-24 text-center">
-        <Link href="/" aria-label="ORBIS Signature Leather">
+        <Link href="/" aria-label="ORBIS Leather">
           <Logo layout="stacked" showTagline />
         </Link>
         <div className="flex flex-col gap-2">

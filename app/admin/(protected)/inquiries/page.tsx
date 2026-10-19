@@ -10,6 +10,31 @@ import { cn } from "@/lib/utils";
 const STATUS_OPTIONS = ["NEW", "CONTACTED", "QUALIFIED", "CLOSED", "SPAM"] as const;
 const TYPE_OPTIONS = ["QUOTE", "CONTACT"] as const;
 
+function detailEntries(details: unknown): Array<[string, string]> {
+  if (!details || typeof details !== "object" || Array.isArray(details)) return [];
+  return Object.entries(details).flatMap(([label, value]) => {
+    if (value == null || value === "") return [];
+    const text = Array.isArray(value) ? value.map(String).join(", ") : String(value);
+    return [[label, text] as [string, string]];
+  });
+}
+
+function InquiryDetails({ details }: { details: unknown }) {
+  const rows = detailEntries(details);
+  if (rows.length === 0) return null;
+
+  return (
+    <dl className="grid gap-4 text-body-sm sm:grid-cols-2">
+      {rows.map(([label, value]) => (
+        <div key={label}>
+          <dt className="text-caption uppercase tracking-wide text-ink/60">{label}</dt>
+          <dd className="whitespace-pre-wrap text-ink">{value}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
 const STATUS_BADGE: Record<(typeof STATUS_OPTIONS)[number], BadgeVariant> = {
   NEW: "leather",
   CONTACTED: "ink",
@@ -153,6 +178,8 @@ export default async function AdminInquiriesPage({
                   <dd className="text-ink">{inquiry.ipAddress ?? "—"}</dd>
                 </div>
               </dl>
+
+              <InquiryDetails details={inquiry.details} />
 
               <div>
                 <p className="mb-1 text-caption uppercase tracking-wide text-ink/60">Message</p>

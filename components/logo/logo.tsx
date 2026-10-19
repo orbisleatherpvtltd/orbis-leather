@@ -15,9 +15,9 @@ export type LogoProps = {
 };
 
 const logoImage: Record<LogoTone, { src: string; width: number; height: number }> = {
-  default: { src: "/images/Orbis.logo.png", width: 1185, height: 372 },
-  reverse: { src: "/images/orbis_logo_footer.png", width: 1191, height: 378 },
-  mono: { src: "/images/Orbis.logo.png", width: 1185, height: 372 },
+  default: { src: "/images/orbis_logo.png", width: 657, height: 248 },
+  reverse: { src: "/images/orbix_logo_white.png", width: 657, height: 248 },
+  mono: { src: "/images/orbis_logo.png", width: 657, height: 248 },
 };
 
 const ringColor: Record<LogoTone, string> = {
@@ -73,12 +73,12 @@ export function Logo({
   return (
     <Image
       src={image.src}
-      alt={siteConfig.name}
+      alt={siteConfig.brandName}
       width={image.width}
       height={image.height}
       className={cn(
         "w-auto shrink-0 self-start select-none object-contain",
-        layout === "stacked" ? "h-16" : "h-9",
+        layout === "stacked" ? "h-16" : "h-12",
         className,
       )}
     />

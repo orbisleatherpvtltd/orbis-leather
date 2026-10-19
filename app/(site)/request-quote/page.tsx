@@ -41,7 +41,7 @@ export default async function RequestQuotePage({
           as="h1"
           eyebrow="Request a Quote"
           title="Tell us about your project"
-          description="Share your specifications, quantities, and timeline. We reply within 24 hours."
+          description="Share your specifications, quantities, and timeline. We reply within 1 business day."
         />
         {product && (
           <p className="text-body text-ink/70">
@@ -57,7 +57,6 @@ export default async function RequestQuotePage({
         <Reveal direction="right" className="rounded-2xl bg-paper p-8 shadow-lg shadow-ink/5 ring-1 ring-ink/5 md:p-10">
           <InquiryForm
             variant="quote"
-            defaultProductInterest={product?.category.name}
             defaultMessage={product ? `Regarding: ${product.name}\n\n` : undefined}
           />
         </Reveal>
@@ -68,7 +67,7 @@ export default async function RequestQuotePage({
               What Happens Next
             </p>
             <p className="text-body text-ink/70">
-              Our team reviews every inquiry personally. We reply within 24 hours.
+              Our team reviews every inquiry personally. We reply within 1 business day.
             </p>
           </div>
 

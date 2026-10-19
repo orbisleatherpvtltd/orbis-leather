@@ -9,17 +9,16 @@ import { ButtonLink } from "@/components/ui/button";
 import { getPublishedFaqs } from "@/lib/faq/data";
 import { requestQuoteHref } from "@/lib/site-config";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { faqPageJsonLd } from "@/lib/seo/schema";
-import { JsonLd } from "@/components/seo/json-ld";
 import { Reveal } from "@/components/motion/reveal";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = buildMetadata({
-  title: "FAQ",
+  title: "FAQ: Leather Jacket Manufacturing, MOQ 5 | ORBIS Leather",
   description:
-    "Answers to common questions about MOQ, sampling, lead time, shipping, Incoterms, and payment terms.",
+    "Answers about MOQ (5 pieces per style), samples, custom embroidery jackets, private label, shipping and payment. Leather jacket manufacturer in Karachi.",
   path: "/faq",
+  titleMode: "absolute",
 });
 
 export default async function FaqPage() {
@@ -27,8 +26,6 @@ export default async function FaqPage() {
 
   return (
     <>
-      {faqEntries.length > 0 && <JsonLd data={faqPageJsonLd(faqEntries)} />}
-
       <Section size="lg">
         <div className="flex flex-col gap-8">
           <Reveal>
