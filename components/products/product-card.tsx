@@ -8,6 +8,12 @@ import type { Product } from "@/lib/products/types";
 export function ProductCard({ product }: { product: Product }) {
   const primaryImage = product.images.find((image) => image.isPrimary) ?? product.images[0];
 
+  const specLine = product.leatherType
+    ? `${product.leatherType} · MOQ ${product.moq}`
+    : product.moq
+      ? `MOQ ${product.moq}`
+      : null;
+
   return (
     <Card>
       <Link href={`/products/${product.slug}`} aria-hidden="true" tabIndex={-1} className="relative block">
@@ -16,10 +22,14 @@ export function ProductCard({ product }: { product: Product }) {
           alt={primaryImage?.altText ?? product.name}
           ratio="portrait"
         />
-        {(product.featured || product.isSampleContent) && (
+        {!primaryImage && (
+          <span className="absolute inset-x-0 bottom-3 text-center text-caption text-ink/40">
+            Photo coming soon
+          </span>
+        )}
+        {product.featured && (
           <div className="absolute left-3 top-3 flex flex-wrap gap-2">
-            {product.featured && <Badge variant="ink">Featured</Badge>}
-            {product.isSampleContent && <Badge variant="leather">Sample Content</Badge>}
+            <Badge variant="ink">Featured</Badge>
           </div>
         )}
       </Link>
@@ -32,8 +42,8 @@ export function ProductCard({ product }: { product: Product }) {
             {product.name}
           </Link>
         </CardTitle>
-        {product.leatherType && (
-          <p className="text-caption uppercase tracking-wide text-ink/60">{product.leatherType}</p>
+        {specLine && (
+          <p className="text-caption uppercase tracking-wide text-ink/60">{specLine}</p>
         )}
         <CardDescription>{product.shortDescription}</CardDescription>
         <CardFooter>
@@ -41,6 +51,7 @@ export function ProductCard({ product }: { product: Product }) {
             href={`/request-quote?product=${product.slug}`}
             variant="outline"
             size="sm"
+            aria-label={`Request quote for ${product.name}`}
           >
             Request Quote
           </ButtonLink>

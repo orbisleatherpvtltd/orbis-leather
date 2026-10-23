@@ -102,7 +102,7 @@ export function MediaPicker({
         ) : assets.length === 0 ? (
           <p className="text-body-sm text-ink/60">No uploaded images yet.</p>
         ) : (
-          <div className="grid grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {assets.map((asset) => (
               <button
                 key={asset.id}

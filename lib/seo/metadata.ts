@@ -6,7 +6,7 @@ const TITLE_LIMIT = 60;
 
 function composeTitle(title: string, titleMode: "template" | "absolute") {
   if (titleMode === "absolute") {
-    return title.length <= TITLE_LIMIT ? title : title.slice(0, TITLE_LIMIT).trimEnd();
+    return title;
   }
 
   const full = `${title}${BRAND_SUFFIX}`;

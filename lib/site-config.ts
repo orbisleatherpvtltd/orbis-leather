@@ -14,7 +14,7 @@ export const primaryNav: NavItem[] = [
 
 export const legalNav: NavItem[] = [
   { label: "Privacy Policy", href: "/privacy-policy" },
-  { label: "Terms", href: "/terms" },
+  { label: "Terms & Conditions", href: "/terms" },
 ];
 
 export const requestQuoteHref = "/request-quote";

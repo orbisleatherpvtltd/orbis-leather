@@ -173,9 +173,9 @@ export function HeroSplit({ categories }: { categories: ProductCategory[] }) {
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-[3.3em] font-extrabold tracking-tight text-ink leading-[1.08]">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.3em] font-extrabold tracking-tight text-ink leading-[1.08]">
                 Leather Jacket Manufacturer
-                <br />
+                <br className="hidden sm:block" />{" "}
                 in Pakistan for{" "}
                 <span className="relative inline-block font-serif italic text-leather">
                   Wholesale &amp; Private Label

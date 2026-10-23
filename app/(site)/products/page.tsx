@@ -16,9 +16,10 @@ import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Products",
+  title: "Leather Jackets: Men's, Women's, Custom Embroidery | ORBIS Leather",
+  titleMode: "absolute",
   description:
-    "Genuine leather jackets and private-label programs for wholesale buyers. Browse our range and request a quote.",
+    "Browse men's and women's leather jacket styles, private label and custom embroidery jackets. MOQ 5 pieces per style. Made in Karachi, Pakistan.",
   path: "/products",
 });
 
@@ -39,9 +40,9 @@ export default async function ProductsPage() {
           </Reveal>
           <SectionHeader
             as="h1"
-            eyebrow="Wholesale & Private Label"
-            title="Genuine leather jackets, built for your program"
-            description="Browse our range of manufactured styles and custom programs. Pricing is confirmed per order. Request a quote for any product."
+            eyebrow="From 5 Pieces Per Style"
+            title="Genuine leather jackets, made for your brand"
+            description="Browse our jacket styles, or send us your own design. Every style starts at 5 pieces. Pricing is confirmed in your quote, so request one for any jacket you like."
           />
           <StaggerGroup className="flex flex-wrap gap-3">
             {categories.map((category) => (
@@ -63,8 +64,8 @@ export default async function ProductsPage() {
 
       <CtaBanner
         eyebrow="Don't See What You Need?"
-        title="We build custom and private-label programs too"
-        description="Share your designs, materials, and volumes. Our team will follow up with a tailored quote."
+        title="We can make your own design too"
+        description="Send us your design, reference photos and quantity. Orders start from 5 pieces per style. Our team will follow up with a quote."
         actions={
           <ButtonLink href={requestQuoteHref} variant="reverse">
             Request Quote

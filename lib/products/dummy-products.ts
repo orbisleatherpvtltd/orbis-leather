@@ -1,4 +1,3 @@
-import { dummyImage } from "@/lib/dummy-images";
 import { productCategories } from "@/lib/products/categories";
 import type { Product } from "@/lib/products/types";
 
@@ -6,15 +5,6 @@ const timestamp = "2026-01-15T00:00:00.000Z";
 
 function categoryFor(slug: Product["category"]["slug"]) {
   return productCategories.find((category) => category.slug === slug)!;
-}
-
-function images(offset: number, altBase: string): Product["images"] {
-  return [0, 1, 2].map((i) => ({
-    id: `dummy-img-${offset}-${i}`,
-    url: dummyImage(offset + i, i === 0 ? 1200 : 800),
-    altText: `${altBase} - view ${i + 1}`,
-    isPrimary: i === 0,
-  }));
 }
 
 /**
@@ -36,7 +26,7 @@ export const dummyProducts: Product[] = [
     leadTime: "30–45 days",
     featured: true,
     status: "PUBLISHED",
-    images: images(0, "Classic Biker Jacket"),
+    images: [],
     specifications: [
       { label: "Leather Type", value: "Full-grain cowhide" },
       { label: "Lining", value: "Quilted polyester" },
@@ -66,7 +56,7 @@ export const dummyProducts: Product[] = [
     leadTime: "35–50 days",
     featured: true,
     status: "PUBLISHED",
-    images: images(1, "Aviator Bomber Jacket"),
+    images: [],
     specifications: [
       { label: "Leather Type", value: "Oiled lambskin" },
       { label: "Collar", value: "Detachable shearling" },
@@ -95,7 +85,7 @@ export const dummyProducts: Product[] = [
     leadTime: "30–45 days",
     featured: true,
     status: "PUBLISHED",
-    images: images(2, "Fitted Moto Jacket"),
+    images: [],
     specifications: [
       { label: "Leather Type", value: "Soft lambskin" },
       { label: "Lining", value: "Silk-touch polyester" },
@@ -124,7 +114,7 @@ export const dummyProducts: Product[] = [
     leadTime: "40–55 days",
     featured: false,
     status: "PUBLISHED",
-    images: images(3, "Longline Leather Trench Coat"),
+    images: [],
     specifications: [
       { label: "Leather Type", value: "Nappa leather" },
       { label: "Closure", value: "Belted wrap with snap-through buttons" },
@@ -153,7 +143,7 @@ export const dummyProducts: Product[] = [
     leadTime: "Confirmed at quote stage",
     featured: true,
     status: "PUBLISHED",
-    images: images(4, "OEM Development Program"),
+    images: [],
     specifications: [
       { label: "Program Type", value: "OEM / buyer-specified design" },
       { label: "Sampling", value: "Pre-production samples included" },
@@ -181,7 +171,7 @@ export const dummyProducts: Product[] = [
     leadTime: "35–50 days",
     featured: false,
     status: "PUBLISHED",
-    images: images(0, "Private Label Starter Program"),
+    images: [],
     specifications: [
       { label: "Program Type", value: "Private label, lower MOQ" },
       { label: "Design Support", value: "Included for first collection" },

@@ -92,7 +92,7 @@ export async function BlogListing({ category, q, page, basePath, breadcrumbLabel
 
           <Reveal delay={0.1}>
             <form action={basePath} method="GET" className="flex flex-wrap items-end gap-4">
-              <div className="min-w-[240px] flex-1">
+              <div className="min-w-0 flex-1 sm:min-w-[240px]">
                 <label
                   htmlFor="q"
                   className="mb-2 block text-caption uppercase tracking-wide text-ink/60"

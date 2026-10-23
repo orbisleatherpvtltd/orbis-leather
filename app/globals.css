@@ -16,27 +16,29 @@
   --color-background: var(--color-paper);
   --color-foreground: var(--color-ink);
 
-  /* Typography scale (paired with line-height) */
-  --text-display: 3.5rem;
+  /* Typography scale (paired with line-height). Fluid between a 320px and
+     1280px viewport so headings scale smoothly instead of jumping at
+     breakpoints. */
+  --text-display: clamp(2.5rem, 2.167rem + 1.667vw, 3.5rem);
   --text-display--line-height: 1.05;
   --text-display--letter-spacing: -0.02em;
 
-  --text-h1: 2.75rem;
+  --text-h1: clamp(2.25rem, 2.083rem + 0.833vw, 2.75rem);
   --text-h1--line-height: 1.1;
   --text-h1--letter-spacing: -0.02em;
 
-  --text-h2: 2.25rem;
+  --text-h2: clamp(1.875rem, 1.75rem + 0.625vw, 2.25rem);
   --text-h2--line-height: 1.15;
   --text-h2--letter-spacing: -0.015em;
 
-  --text-h3: 1.75rem;
+  --text-h3: clamp(1.5rem, 1.417rem + 0.417vw, 1.75rem);
   --text-h3--line-height: 1.2;
   --text-h3--letter-spacing: -0.01em;
 
-  --text-h4: 1.375rem;
+  --text-h4: clamp(1.25rem, 1.208rem + 0.208vw, 1.375rem);
   --text-h4--line-height: 1.3;
 
-  --text-subheading: 1.125rem;
+  --text-subheading: clamp(1rem, 0.958rem + 0.208vw, 1.125rem);
   --text-subheading--line-height: 1.5;
 
   --text-body-lg: 1.125rem;

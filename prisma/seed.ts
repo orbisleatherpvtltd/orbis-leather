@@ -1,7 +1,6 @@
 import { randomBytes } from "node:crypto";
 import { prisma } from "@/lib/db";
 import { hashPassword } from "@/lib/auth/password";
-import { dummyImage } from "@/lib/dummy-images";
 import { productCategories } from "@/lib/products/categories";
 import { mockProducts } from "@/lib/products/mock-data";
 import { blogCategories } from "@/lib/blog/categories";
@@ -93,19 +92,23 @@ async function seedProducts() {
     }
 
     // Backfill images for products that already existed without any (e.g. from
-    // before this relation was wired up) as well as freshly created ones.
+    // before this relation was wired up) as well as freshly created ones. Only
+    // creates rows for images with a real URL - never falls back to stock
+    // placeholder photos, so products without real photography stay blank and
+    // show the "Photo coming soon" state instead.
     const existingImageCount = await prisma.productImage.count({ where: { productId: row.id } });
-    if (existingImageCount === 0 && product.images.length > 0) {
+    const imagesWithUrls = product.images.filter((image) => image.url);
+    if (existingImageCount === 0 && imagesWithUrls.length > 0) {
       await prisma.productImage.createMany({
-        data: product.images.map((image, imageIndex) => ({
+        data: imagesWithUrls.map((image, imageIndex) => ({
           productId: row.id,
-          url: image.url ?? dummyImage(index * 3 + imageIndex),
+          url: image.url!,
           altText: image.altText,
           sortOrder: imageIndex,
           isPrimary: image.isPrimary ?? imageIndex === 0,
         })),
       });
-      imagesCreated += product.images.length;
+      imagesCreated += imagesWithUrls.length;
     }
   }
 

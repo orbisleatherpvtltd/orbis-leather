@@ -26,7 +26,7 @@ export function ProductGallery({
         className="rounded-3xl shadow-2xl shadow-ink/10"
       />
       {images.length > 1 && (
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
           {images.map((image, index) => (
             <button
               key={image.id}

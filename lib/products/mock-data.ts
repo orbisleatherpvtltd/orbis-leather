@@ -5,7 +5,8 @@ const men = productCategories[0];
 const women = productCategories[1];
 const custom = productCategories[2];
 
-const STANDARD_MOQ = "Varies by style and customization - confirmed at quote stage.";
+const STYLE_MOQ = "5 per style";
+const PROGRAM_MOQ = "5 pieces per style";
 const STANDARD_LEAD_TIME =
   "Confirmed at quote stage, based on order volume and customization.";
 
@@ -30,8 +31,8 @@ export const mockProducts: Product[] = [
     shortDescription: "A timeless asymmetric biker silhouette in full-grain cowhide.",
     description:
       "Our Classic Biker Jacket pairs a traditional asymmetric zip front with a tailored, modern fit. Built for wholesale and private-label programs, it's a reliable foundation style that customizes well across hardware, lining, and branding.",
-    leatherType: "Full-grain cowhide leather",
-    moq: STANDARD_MOQ,
+    leatherType: "Full-grain cowhide",
+    moq: STYLE_MOQ,
     leadTime: STANDARD_LEAD_TIME,
     featured: false,
     status: "PUBLISHED",
@@ -61,8 +62,8 @@ export const mockProducts: Product[] = [
     shortDescription: "A classic bomber silhouette in soft top-grain sheepskin.",
     description:
       "The Aviator Bomber Jacket combines a relaxed bomber cut with soft, supple sheepskin leather. Well suited to private-label programs looking for a premium casual outerwear staple.",
-    leatherType: "Top-grain sheepskin leather",
-    moq: STANDARD_MOQ,
+    leatherType: "Top-grain sheepskin",
+    moq: STYLE_MOQ,
     leadTime: STANDARD_LEAD_TIME,
     featured: false,
     status: "PUBLISHED",
@@ -91,8 +92,8 @@ export const mockProducts: Product[] = [
     shortDescription: "A minimalist, collarless silhouette in full-grain cowhide.",
     description:
       "The Café Racer Jacket offers a clean, collarless design in durable full-grain cowhide - a versatile style for brands seeking a modern, minimal outerwear option.",
-    leatherType: "Full-grain cowhide leather",
-    moq: STANDARD_MOQ,
+    leatherType: "Full-grain cowhide",
+    moq: STYLE_MOQ,
     leadTime: STANDARD_LEAD_TIME,
     featured: true,
     status: "PUBLISHED",
@@ -121,10 +122,10 @@ export const mockProducts: Product[] = [
     shortDescription: "A tailored moto silhouette in soft lambskin leather.",
     description:
       "The Fitted Moto Jacket is cut close to the body in soft lambskin leather, offering a refined take on a classic moto style - suited to both wholesale and private-label programs.",
-    leatherType: "Lambskin leather",
-    moq: STANDARD_MOQ,
+    leatherType: "Lambskin",
+    moq: STYLE_MOQ,
     leadTime: STANDARD_LEAD_TIME,
-    featured: true,
+    featured: false,
     status: "PUBLISHED",
     isSampleContent: true,
     images: [
@@ -151,8 +152,8 @@ export const mockProducts: Product[] = [
     shortDescription: "An elevated longline silhouette in top-grain cowhide.",
     description:
       "The Longline Leather Trench brings a tailored, floor-grazing silhouette to genuine leather outerwear - a statement piece for premium private-label collections.",
-    leatherType: "Top-grain cowhide leather",
-    moq: STANDARD_MOQ,
+    leatherType: "Top-grain cowhide",
+    moq: STYLE_MOQ,
     leadTime: STANDARD_LEAD_TIME,
     featured: false,
     status: "PUBLISHED",
@@ -181,8 +182,8 @@ export const mockProducts: Product[] = [
     shortDescription: "A cropped, versatile layering piece in soft lambskin.",
     description:
       "The Cropped Leather Jacket is designed as a versatile layering piece, offered in soft lambskin leather with a range of customizable finishes.",
-    leatherType: "Lambskin leather",
-    moq: STANDARD_MOQ,
+    leatherType: "Lambskin",
+    moq: STYLE_MOQ,
     leadTime: STANDARD_LEAD_TIME,
     featured: false,
     status: "PUBLISHED",
@@ -203,15 +204,14 @@ export const mockProducts: Product[] = [
   {
     id: "prod-custom-leather-jacket-program",
     slug: "custom-leather-jacket-program",
-    name: "Custom Leather Jacket Program",
+    name: "Custom Leather Jackets",
     category: custom,
-    shortDescription: "Full OEM development of your own leather jacket designs.",
+    shortDescription: "Send us your own design or reference and we will develop it into a finished jacket.",
     description:
-      "Our Custom Leather Jacket Program covers full OEM development - from pattern-making through sampling and production - built entirely around your designs, materials, and specifications.",
-    leatherType: "Buyer-specified - multiple leather types available",
-    moq: "Program-based - confirmed at quote stage depending on scope.",
+      "Send us your own design or reference and we will develop it into a finished jacket - from pattern-making through sampling and production, built entirely around your designs, materials, and specifications.",
+    moq: PROGRAM_MOQ,
     leadTime: STANDARD_LEAD_TIME,
-    featured: true,
+    featured: false,
     status: "PUBLISHED",
     isSampleContent: true,
     images: [
@@ -228,27 +228,26 @@ export const mockProducts: Product[] = [
       "Custom hardware, lining, and branding",
       "Sampling and fit iterations",
     ],
-    seoTitle: "Custom Leather Jacket Program - OEM Manufacturing",
+    seoTitle: "Custom Leather Jackets - OEM Manufacturing",
     seoDescription:
-      "OEM custom leather jacket development and manufacturing. Share your designs and specifications to request a tailored quote.",
+      "Send us your own design or reference and we will develop it into a finished jacket. Request a tailored quote.",
     createdAt: "2026-01-05T00:00:00.000Z",
     updatedAt: "2026-06-01T00:00:00.000Z",
   },
   {
     id: "prod-private-label-outerwear-program",
     slug: "private-label-outerwear-program",
-    name: "Private Label Outerwear Program",
+    name: "Private Label Leather Jackets",
     category: custom,
-    shortDescription: "Ready-to-brand outerwear styles for private label partners.",
+    shortDescription: "Leather jackets made to your specifications, ready for your brand.",
     description:
-      "The Private Label Outerwear Program offers a curated set of base outerwear styles that can be branded, adjusted, and packaged under your own label - a faster path to market than full custom development.",
-    leatherType: "Buyer-specified - multiple leather types available",
-    moq: "Program-based - confirmed at quote stage depending on scope.",
+      "Leather jackets made to your specifications, ready for your brand - a curated set of base outerwear styles that can be branded, adjusted, and packaged under your own label.",
+    moq: PROGRAM_MOQ,
     leadTime: STANDARD_LEAD_TIME,
     featured: false,
     status: "PUBLISHED",
     isSampleContent: true,
-    images: [{ id: "img-1", altText: "Private label outerwear styles", isPrimary: true }],
+    images: [{ id: "img-1", altText: "Private label leather jacket styles", isPrimary: true }],
     specifications: [
       { label: "Program Type", value: "Private label" },
       { label: "Base Styles", value: "Selected from existing catalog styles" },
@@ -260,10 +259,42 @@ export const mockProducts: Product[] = [
       "Minor fit and material adjustments",
       "Size range adjustment",
     ],
-    seoTitle: "Private Label Outerwear Program - Leather Manufacturing",
+    seoTitle: "Private Label Leather Jackets - Manufacturing",
     seoDescription:
-      "Private label leather outerwear program with custom branding and packaging. Request a quote to get started.",
+      "Private label leather jackets with custom branding and packaging. Request a quote to get started.",
     createdAt: "2026-01-08T00:00:00.000Z",
     updatedAt: "2026-06-01T00:00:00.000Z",
+  },
+  {
+    id: "prod-custom-embroidery-jacket",
+    slug: "custom-embroidery-jacket",
+    name: "Custom Embroidery Jacket",
+    category: custom,
+    shortDescription: "Your artwork stitched directly into a genuine leather jacket.",
+    description:
+      "Your artwork stitched directly into a genuine leather jacket - send us your logo, text, or design and we will embroider it directly onto the leather.",
+    leatherType: "Direct embroidery",
+    moq: STYLE_MOQ,
+    leadTime: STANDARD_LEAD_TIME,
+    featured: true,
+    status: "PUBLISHED",
+    isSampleContent: true,
+    images: [],
+    specifications: [
+      { label: "Technique", value: "Direct embroidery on leather" },
+      { label: "Designs", value: "Logo, text, or custom artwork" },
+      { label: "Sampling", value: "Available prior to bulk production" },
+    ],
+    customizationOptions: [
+      "Buyer-supplied artwork or logo",
+      "Thread color matching",
+      "Placement and size adjustment",
+      "Custom hardware and lining",
+    ],
+    seoTitle: "Custom Embroidery Jacket - Genuine Leather Manufacturing",
+    seoDescription:
+      "Custom embroidered leather jackets with your artwork stitched directly into the leather. Request a quote for your specifications and volumes.",
+    createdAt: "2026-06-15T00:00:00.000Z",
+    updatedAt: "2026-06-15T00:00:00.000Z",
   },
 ];

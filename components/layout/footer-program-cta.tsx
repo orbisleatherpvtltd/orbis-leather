@@ -7,7 +7,7 @@ import { requestQuoteHref } from "@/lib/site-config";
 
 export function FooterProgramCta() {
   const pathname = usePathname();
-  if (pathname === "/faq") return null;
+  if (pathname === "/faq" || pathname === "/products") return null;
 
   return (
     <div className="pt-14 md:pt-16">
