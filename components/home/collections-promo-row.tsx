@@ -2,22 +2,21 @@ import Link from "next/link";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { ImageFrame } from "@/components/ui/image-frame";
 import { ArrowRightIcon } from "@/components/icons";
-import { dummyImage } from "@/lib/dummy-images";
 
 const promos = [
   {
     label: "New Product Launches",
     caption: "Styles across 3 programs",
     href: "/products",
-    image: dummyImage(3, 1600),
-    alt: "New leather outerwear style, product detail",
+    image: "/images/home/promo-new-launches.jpg",
+    alt: "Model wearing a new ORBIS leather outerwear style",
   },
   {
     label: "Upcoming Collections",
     caption: "Release details confirmed at quote stage",
     href: "/capabilities",
-    image: dummyImage(4, 1600),
-    alt: "Leather goods flat lay, upcoming collection preview",
+    image: "/images/home/promo-collections.jpg",
+    alt: "Model wearing an ORBIS leather jacket, upcoming collection preview",
   },
 ];
 

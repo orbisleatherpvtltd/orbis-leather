@@ -13,7 +13,6 @@ import {
 import { ButtonLink } from "@/components/ui/button";
 import { TextLink } from "@/components/ui/text-link";
 import { ArrowRightIcon, ChevronRightIcon } from "@/components/icons";
-import { lifestyleImage } from "@/lib/dummy-images";
 import { requestQuoteHref } from "@/lib/site-config";
 import type { ProductCategory } from "@/lib/products/types";
 import { cn } from "@/lib/utils";
@@ -21,54 +20,54 @@ import { cn } from "@/lib/utils";
 // Editorial slides with interactive craftsmanship hotspots
 const slides = [
   {
-    image: lifestyleImage(0, 1600),
-    title: "The Signature Biker Program",
+    image: "/images/home/hero-cafe-racer.jpg",
+    title: "The Café Racer Program",
     category: "Outerwear & Jackets",
-    stat: "1.2mm Drum-Dyed Cowhide",
+    stat: "Full-Grain Cowhide",
     hotspots: [
       {
         x: "48%",
-        y: "28%",
-        label: "Italian Lapel Collar",
-        spec: "Hand-creased 1.2mm drum-dyed hide with reinforced canvas interlining.",
+        y: "22%",
+        label: "Snap-Collar Neckline",
+        spec: "Low, close-fitting collar with a press-stud closure for a clean racer silhouette.",
       },
       {
-        x: "62%",
-        y: "48%",
-        label: "Bespoke Hardware",
-        spec: "YKK #10 cast antique brass zippers with custom engraved pullers.",
+        x: "40%",
+        y: "40%",
+        label: "Dual Zip Chest Pockets",
+        spec: "Angled chest zips in matched hardware, finished with bonded nylon thread.",
       },
       {
-        x: "38%",
-        y: "72%",
-        label: "Bonded Twin Stitch",
-        spec: "8 SPI heavy-duty bonded nylon thread engineered for maximum tensile load.",
+        x: "60%",
+        y: "35%",
+        label: "Center Front Zipper",
+        spec: "Smooth-pull heavy-duty zipper running the full front length.",
       },
     ],
   },
   {
-    image: lifestyleImage(1, 1600),
-    title: "The Heritage Aviator",
+    image: "/images/home/hero-embroidery.jpg",
+    title: "Custom Embroidery Program",
     category: "Private Label Collection",
-    stat: "Vegetable Tanned Leather",
+    stat: "Multi-Thread Back Panel Art",
     hotspots: [
       {
-        x: "52%",
-        y: "22%",
-        label: "Genuine Shearling Trim",
-        spec: "100% Australian Merino wool insulation with weatherproof edge coating.",
+        x: "50%",
+        y: "40%",
+        label: "Multi-Color Back Embroidery",
+        spec: "Dense multi-thread embroidery digitized from your artwork, stitched directly onto the back panel.",
       },
       {
-        x: "42%",
-        y: "55%",
-        label: "Artisan Waxed Finish",
-        spec: "Hand-applied carnauba wax offering rich pull-up patina over decades.",
+        x: "30%",
+        y: "15%",
+        label: "Notched Lapel Collar",
+        spec: "Structured notch collar with reinforced canvas interlining.",
       },
       {
-        x: "65%",
-        y: "78%",
-        label: "Reinforced Seams",
-        spec: "Double-reinforced stress points with hand-tapped leather backing strips.",
+        x: "70%",
+        y: "70%",
+        label: "Clean Panel Seaming",
+        spec: "Precision-matched back panel seams for a uniform embroidery canvas.",
       },
     ],
   },

@@ -12,7 +12,6 @@ import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { DrawLine } from "@/components/motion/draw-line";
 import { requestQuoteHref } from "@/lib/site-config";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { dummyImage } from "@/lib/dummy-images";
 
 export const metadata: Metadata = buildMetadata({
   title: "About",
@@ -44,11 +43,14 @@ const journey = [
   },
 ];
 
-const galleryPlaceholders = [
-  "Cutting floor",
-  "Stitching line",
-  "Quality control station",
-  "Packaging & dispatch",
+const gallery = [
+  { caption: "Pattern & design table", src: "/images/about/pattern-design-table.jpg" },
+  { caption: "Size grading", src: "/images/about/size-grading.jpg" },
+  { caption: "Cutting floor", src: "/images/about/cutting-floor.jpg" },
+  { caption: "Stitching line", src: "/images/about/stitching-line.jpg" },
+  { caption: "Quality control station", src: "/images/about/quality-control-station.jpg" },
+  { caption: "Packaging & dispatch", src: "/images/about/packaging-dispatch.jpg" },
+  { caption: "Production process", src: "/images/about/production-process.jpg" },
 ];
 
 export default function AboutPage() {
@@ -99,8 +101,8 @@ export default function AboutPage() {
           </Reveal>
           <Reveal direction="left" delay={0.1}>
             <ImageFrame
-              src={dummyImage(0, 1200)}
-              alt="ORBIS manufacturing facility"
+              src="/images/about/our-story.jpg"
+              alt="Craftsman at work in the ORBIS leather atelier"
               ratio="portrait"
               className="rounded-3xl shadow-2xl shadow-ink/10"
             />
@@ -135,19 +137,19 @@ export default function AboutPage() {
         <SectionHeader
           eyebrow="Inside ORBIS"
           title="Factory & production gallery"
-          description="A look at our manufacturing floor. Placeholder photography shown below pending final gallery assets."
+          description="A look at our manufacturing floor, from pattern-making to packaging."
           className="mb-12"
         />
         <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {galleryPlaceholders.map((caption, index) => (
-            <StaggerItem key={caption} className="flex flex-col gap-3">
+          {gallery.map((item) => (
+            <StaggerItem key={item.caption} className="flex flex-col gap-3">
               <ImageFrame
-                src={dummyImage(index + 1, 800)}
-                alt={caption}
+                src={item.src}
+                alt={item.caption}
                 ratio="square"
                 className="rounded-2xl shadow-lg shadow-ink/5"
               />
-              <p className="text-caption text-ink/60">{caption}</p>
+              <p className="text-caption text-ink/60">{item.caption}</p>
             </StaggerItem>
           ))}
         </StaggerGroup>

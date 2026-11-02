@@ -18,28 +18,28 @@ type ShowcaseCard = {
 
 const cards: ShowcaseCard[] = [
   {
-    src: "https://images.unsplash.com/photo-1531310197839-ccf54634509e?auto=format&fit=crop&w=600&q=80",
-    alt: "Detail of genuine leather bag",
+    src: "/images/products/classic-biker-jacket/04-leather-grain-stitching.jpg",
+    alt: "Close-up of leather grain and stitching on the Classic Biker Jacket",
     ring: "ring-leather/40",
   },
   {
-    src: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80",
-    alt: "Genuine leather jacket on display",
+    src: "/images/products/aviator-bomber-jacket/04-collar-zipper-detail.jpg",
+    alt: "Collar and zipper detail on the Aviator Bomber Jacket",
     ring: "ring-ink/20",
   },
   {
-    src: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80",
-    alt: "Leather jacket flat lay",
+    src: "/images/products/cafe-racer-jacket/05-pocket-cuff-zippers.jpg",
+    alt: "Pocket and cuff zipper detail on the Café Racer Jacket",
     ring: "ring-amber-700/40",
   },
   {
-    src: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80",
-    alt: "Pair of leather boots",
+    src: "/images/products/private-label-outerwear-program/05-custom-hardware.jpg",
+    alt: "Custom hardware for private-label leather jackets",
     ring: "ring-stone-400/50",
   },
   {
-    src: "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=600&q=80",
-    alt: "Genuine leather handbag",
+    src: "/images/products/custom-embroidery-jacket/04-embroidery-macro.jpg",
+    alt: "Macro detail of custom embroidery on a leather jacket back panel",
     ring: "ring-leather/40",
   },
 ];

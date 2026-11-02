@@ -2,7 +2,6 @@ import { Section } from "@/components/layout/section";
 import { Reveal } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/ui/button";
 import { ImageFrame } from "@/components/ui/image-frame";
-import { lifestyleImage } from "@/lib/dummy-images";
 import type { Product } from "@/lib/products/types";
 
 export function LifestyleBanner({ product }: { product: Product | null }) {
@@ -14,8 +13,8 @@ export function LifestyleBanner({ product }: { product: Product | null }) {
     <Section size="lg">
       <Reveal className="relative overflow-hidden rounded-3xl shadow-2xl shadow-ink/20">
         <ImageFrame
-          src={lifestyleImage(3, 1800)}
-          alt="Model wearing a leather jacket in a cold-weather outdoor setting"
+          src="/images/home/lifestyle-banner.jpg"
+          alt="Model wearing an ORBIS leather jacket outdoors"
           ratio="wide"
           zoom={false}
           className="min-h-[380px] sm:min-h-[440px]"

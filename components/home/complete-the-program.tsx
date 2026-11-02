@@ -3,7 +3,6 @@ import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { ImageFrame } from "@/components/ui/image-frame";
 import { TextLink } from "@/components/ui/text-link";
-import { lifestyleImage } from "@/lib/dummy-images";
 import type { Product } from "@/lib/products/types";
 
 export function CompleteTheProgram({ products }: { products: Product[] }) {
@@ -14,8 +13,8 @@ export function CompleteTheProgram({ products }: { products: Product[] }) {
       <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
         <Reveal direction="right">
           <ImageFrame
-            src={lifestyleImage(2, 1200)}
-            alt="Model wearing a leather jacket in an editorial autumn setting"
+            src="/images/home/complete-program.jpg"
+            alt="Model wearing an ORBIS leather jacket in an editorial street setting"
             ratio="portrait"
             className="rounded-3xl shadow-2xl shadow-ink/10"
           />
