@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
     description: product.seoDescription ?? product.shortDescription ?? product.name,
     path: `/products/${product.slug}`,
     image: primaryImage?.url ? { url: primaryImage.url, alt: primaryImage.altText } : undefined,
-    noindex: product.isSampleContent,
+    noindex: false,
   });
 }
 
@@ -76,18 +76,13 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   {product.category.name}
                 </span>
                 <h1 className="text-h1 font-bold text-ink">{product.name}</h1>
-                <div className="flex flex-wrap gap-2">
-                  {product.featured && (
+                {product.featured && (
+                  <div className="flex flex-wrap gap-2">
                     <Badge variant="ink" className="w-fit">
                       Featured
                     </Badge>
-                  )}
-                  {product.isSampleContent && (
-                    <Badge variant="leather" className="w-fit">
-                      Sample Content
-                    </Badge>
-                  )}
-                </div>
+                  </div>
+                )}
                 {product.leatherType && (
                   <p className="text-caption uppercase tracking-wide text-ink/60">
                     {product.leatherType}

@@ -20,10 +20,9 @@ export function ShopProductCard({ product }: { product: Product }) {
           ratio="portrait"
           className="rounded-2xl shadow-lg shadow-ink/5 ring-1 ring-ink/5"
         />
-        {(product.featured || product.isSampleContent) && (
+        {product.featured && (
           <div className="absolute left-3 top-3 flex flex-wrap gap-2">
-            {product.featured && <Badge variant="ink">Featured</Badge>}
-            {product.isSampleContent && <Badge variant="leather">Sample Content</Badge>}
+            <Badge variant="ink">Featured</Badge>
           </div>
         )}
       </div>

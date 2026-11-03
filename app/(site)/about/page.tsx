@@ -6,7 +6,6 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { ImageFrame } from "@/components/ui/image-frame";
 import { CtaBanner } from "@/components/ui/cta-banner";
 import { ButtonLink } from "@/components/ui/button";
-import { CertificationEmptyState } from "@/components/ui/certification-card";
 import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { DrawLine } from "@/components/motion/draw-line";
@@ -153,18 +152,6 @@ export default function AboutPage() {
             </StaggerItem>
           ))}
         </StaggerGroup>
-      </Section>
-
-      <Section size="md">
-        <SectionHeader
-          eyebrow="Certifications"
-          title="Certifications & compliance"
-          description="Verified certifications will be published here as they are confirmed."
-          className="mb-8"
-        />
-        <Reveal>
-          <CertificationEmptyState />
-        </Reveal>
       </Section>
 
       <CtaBanner
