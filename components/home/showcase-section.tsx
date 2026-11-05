@@ -86,7 +86,7 @@ export function ShowcaseSection() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col items-start gap-6 text-left"
         >
-          <Badge variant="outline">Why Manufacturers Choose Us</Badge>
+          <Badge variant="outline">Why Brands Choose Us</Badge>
           <h2 className="max-w-md text-h2 font-bold text-ink">
             Whether it&apos;s bags, jackets, or footwear:{" "}
             <span className="text-leather">we manufacture it right.</span>

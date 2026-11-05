@@ -234,7 +234,7 @@ export default function PrivacyPolicyPage() {
         </LegalSection>
 
         <LegalSection number={15} title="Contact us">
-          <p className="flex flex-col gap-1">
+          <address className="flex flex-col gap-1 not-italic">
             <span>ORBIS Leather</span>
             <span>Karachi, Pakistan</span>
             <span>
@@ -249,7 +249,7 @@ export default function PrivacyPolicyPage() {
                 +92 333 4544557
               </a>
             </span>
-          </p>
+          </address>
         </LegalSection>
       </LegalBody>
     </Section>

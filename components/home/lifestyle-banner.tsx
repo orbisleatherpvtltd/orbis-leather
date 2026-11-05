@@ -17,6 +17,8 @@ export function LifestyleBanner({ product }: { product: Product | null }) {
           alt="Model wearing an ORBIS leather jacket outdoors"
           ratio="wide"
           zoom={false}
+          sizes="100vw"
+          priority
           className="min-h-[380px] sm:min-h-[440px]"
         />
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-ink/10" />

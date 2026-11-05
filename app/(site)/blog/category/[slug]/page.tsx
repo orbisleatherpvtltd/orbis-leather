@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: BlogCategoryPageProps): Promi
       title: "Category Not Found",
       description: "The blog category you're looking for could not be found.",
       path: `/blog/category/${slug}`,
+      noindex: true,
     });
   }
 
@@ -26,6 +27,7 @@ export async function generateMetadata({ params }: BlogCategoryPageProps): Promi
     title: `${category.name} - Blog & Resources`,
     description: category.description || `Articles in ${category.name} for wholesale leather buyers.`,
     path: `/blog/category/${category.slug}`,
+    noindex: true,
   });
 }
 

@@ -9,6 +9,7 @@ export const metadata: Metadata = buildMetadata({
   description:
     "Articles and resources on leather materials, manufacturing, and care for wholesale buyers.",
   path: "/blog",
+  noindex: true,
 });
 
 type BlogPageProps = {

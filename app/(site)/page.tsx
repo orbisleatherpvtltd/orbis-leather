@@ -8,14 +8,11 @@ import { BrowseShopSection } from "@/components/home/browse-shop-section";
 import { CollectionsPromoRow } from "@/components/home/collections-promo-row";
 import { CompleteTheProgram } from "@/components/home/complete-the-program";
 import { LifestyleBanner } from "@/components/home/lifestyle-banner";
-import { RelatedCarousel } from "@/components/home/related-carousel";
 import { TextLink } from "@/components/ui/text-link";
 import { ProcessSteps } from "@/components/ui/process-steps";
-import { BlogCard } from "@/components/blog/blog-card";
 import { CtaBanner } from "@/components/ui/cta-banner";
 import { getCategories, getPublishedProducts } from "@/lib/products/data";
 import { productCategories } from "@/lib/products/categories";
-import { getFeaturedPost } from "@/lib/blog/data";
 import { processSteps } from "@/lib/capabilities/data";
 import { requestQuoteHref } from "@/lib/site-config";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -24,27 +21,37 @@ import { Reveal } from "@/components/motion/reveal";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = buildMetadata({
-  title: "ORBIS Leather - Leather Jacket Manufacturer Pakistan",
+  title: "Leather Jacket Manufacturer Pakistan | MOQ 5 Pieces | ORBIS",
   description:
-    "ORBIS is a leather jacket manufacturer in Pakistan serving wholesale and private label brands with custom specs, low MOQs, and fast turnaround. Request a quote.",
+    "Leather jacket manufacturer in Karachi, since 2001. Private label and custom embroidery jackets from 5 pieces per style. Request a quote.",
   path: "/",
   titleMode: "absolute",
 });
 
+const homepageShopSlugs = [
+  "custom-embroidery-jacket",
+  "cafe-racer-jacket",
+  "classic-biker-jacket",
+  "fitted-moto-jacket",
+];
+
 export default async function HomePage() {
-  const [products, categories, featuredPost] = await Promise.all([
+  const [products, categories] = await Promise.all([
     getPublishedProducts().catch(() => []),
     getCategories().catch(() => productCategories),
-    getFeaturedPost().catch(() => null),
   ]);
 
+  const shopProducts = homepageShopSlugs.flatMap((slug) => {
+    const product = products.find((item) => item.slug === slug);
+    return product ? [product] : [];
+  });
   const aviatorBomber = products.find((product) => product.slug === "aviator-bomber-jacket") ?? null;
 
   return (
     <>
       <HeroSplit categories={categories} />
 
-      <BrowseShopSection products={products.slice(0, 5)} categories={categories} />
+      <BrowseShopSection products={shopProducts} categories={categories} />
 
       <Section size="md">
         <CollectionsPromoRow />
@@ -53,10 +60,6 @@ export default async function HomePage() {
       <CompleteTheProgram products={products.slice(0, 3)} />
 
       <LifestyleBanner product={aviatorBomber} />
-
-      <Section size="md" tone="stone">
-        <RelatedCarousel products={products} />
-      </Section>
 
       <ShowcaseSection />
 
@@ -75,22 +78,6 @@ export default async function HomePage() {
           </Reveal>
         </div>
       </Section>
-
-      {featuredPost && (
-        <Section size="md">
-          <div className="flex flex-col gap-8">
-            <SectionHeader eyebrow="Blog & Resources" title="From the Blog" />
-            <Reveal className="max-w-md">
-              <BlogCard post={featuredPost} />
-            </Reveal>
-            <Reveal delay={0.1}>
-              <TextLink href="/blog" withArrow tone="leather" className="w-fit">
-                Visit the Blog
-              </TextLink>
-            </Reveal>
-          </div>
-        </Section>
-      )}
 
       <CtaBanner
         eyebrow="Start a Project"

@@ -4,7 +4,6 @@ import { Logo } from "@/components/logo/logo";
 import { FacebookIcon, InstagramIcon, LinkedInIcon } from "@/components/icons";
 import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
-import { FooterProgramCta } from "@/components/layout/footer-program-cta";
 import { legalNav, primaryNav, siteConfig } from "@/lib/site-config";
 
 const socialIcons: Record<string, typeof InstagramIcon> = {
@@ -18,8 +17,6 @@ export function Footer() {
 
   return (
     <footer className="rounded-t-[2.5rem] bg-ink text-paper">
-      <FooterProgramCta />
-
       <Container className="py-16">
         <StaggerGroup className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <StaggerItem className="flex flex-col gap-4">
@@ -68,8 +65,13 @@ export function Footer() {
             </h3>
             <ul className="mt-4 flex flex-col gap-3 text-body text-paper/80">
               <li>
-                <a href={`tel:${siteConfig.contact.phone.replace(/\s+/g, "")}`} className="link-underline hover:text-paper">
-                  {siteConfig.contact.phone}
+                <a
+                  href="https://wa.me/923334544557"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="link-underline hover:text-paper"
+                >
+                  +92 333-4544557
                 </a>
               </li>
               <li>
@@ -77,9 +79,7 @@ export function Footer() {
                   {siteConfig.contact.email}
                 </a>
               </li>
-              {siteConfig.contact.addressLines.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
+              <li>Karachi, Pakistan</li>
             </ul>
           </StaggerItem>
 
@@ -106,7 +106,16 @@ export function Footer() {
       <div className="border-t border-paper/10 py-6">
         <Container>
           <p className="text-caption text-paper/50">
-            &copy; {year} {siteConfig.name}. All rights reserved.
+            &copy; {year} ORBIS Leather. All rights reserved. | Website Designed By{" "}
+            <a
+              href="https://www.loopverses.com/"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="link-underline hover:text-paper"
+            >
+              Loopverses
+            </a>
+            .
           </p>
         </Container>
       </div>

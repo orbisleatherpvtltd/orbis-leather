@@ -28,7 +28,7 @@ export function LoadingState({ label = "Loading" }: { label?: string }) {
     <div
       role="status"
       aria-live="polite"
-      className="flex min-h-[40vh] w-full flex-col items-center justify-center gap-4 py-24 text-ink/60"
+      className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-4 bg-paper/90 text-ink/60"
     >
       <Spinner />
       <span className="text-caption uppercase tracking-[0.16em]">{label}</span>

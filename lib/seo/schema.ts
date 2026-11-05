@@ -9,6 +9,7 @@ export function organizationJsonLd() {
     "@type": "Organization",
     name: siteConfig.brandName,
     alternateName: siteConfig.alternateName,
+    foundingDate: "2001",
     url: siteUrl,
     description: siteConfig.description,
     logo: new URL("/images/orbis_logo.png", siteUrl).toString(),

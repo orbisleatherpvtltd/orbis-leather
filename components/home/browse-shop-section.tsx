@@ -4,7 +4,6 @@ import { ButtonLink } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { ShopProductCard } from "@/components/home/shop-product-card";
-import { SpecialProgramCard } from "@/components/home/special-program-card";
 import type { Product, ProductCategory } from "@/lib/products/types";
 
 export function BrowseShopSection({
@@ -14,12 +13,6 @@ export function BrowseShopSection({
   products: Product[];
   categories: ProductCategory[];
 }) {
-  const special =
-    products.find((product) => product.category.slug === "custom-private-label") ??
-    products[products.length - 1];
-  const gridProducts = products.filter((product) => product.id !== special?.id).slice(0, 4);
-  const specialImage = special?.images.find((image) => image.isPrimary) ?? special?.images[0];
-
   return (
     <Section size="md" tone="stone">
       <div className="flex flex-col gap-8">
@@ -44,41 +37,15 @@ export function BrowseShopSection({
           </div>
         </Reveal>
 
-        {gridProducts.length === 0 ? (
+        {products.length === 0 ? (
           <p className="text-body text-ink/60">Check back soon for published products.</p>
         ) : (
-          <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {gridProducts[0] && (
-              <StaggerItem className="lg:col-start-1 lg:row-start-1">
-                <ShopProductCard product={gridProducts[0]} />
+          <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {products.map((product) => (
+              <StaggerItem key={product.id}>
+                <ShopProductCard product={product} />
               </StaggerItem>
-            )}
-            {gridProducts[1] && (
-              <StaggerItem className="lg:col-start-1 lg:row-start-2">
-                <ShopProductCard product={gridProducts[1]} />
-              </StaggerItem>
-            )}
-            {special && specialImage && (
-              <StaggerItem className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
-                <SpecialProgramCard
-                  href={`/products/${special.slug}`}
-                  image={specialImage.url ?? ""}
-                  alt={specialImage.altText}
-                  name={special.name}
-                  category={special.category.name}
-                />
-              </StaggerItem>
-            )}
-            {gridProducts[2] && (
-              <StaggerItem className="lg:col-start-3 lg:row-start-1">
-                <ShopProductCard product={gridProducts[2]} />
-              </StaggerItem>
-            )}
-            {gridProducts[3] && (
-              <StaggerItem className="lg:col-start-3 lg:row-start-2">
-                <ShopProductCard product={gridProducts[3]} />
-              </StaggerItem>
-            )}
+            ))}
           </StaggerGroup>
         )}
 

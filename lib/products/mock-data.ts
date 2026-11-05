@@ -289,7 +289,6 @@ export const mockProducts: Product[] = [
       "Buyer-supplied artwork or logo",
       "Thread color matching",
       "Placement and size adjustment",
-      "Custom hardware and lining",
     ],
     seoTitle: "Custom Embroidery Jacket - Genuine Leather Manufacturing",
     seoDescription:

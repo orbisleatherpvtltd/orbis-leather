@@ -78,8 +78,10 @@ export function InquiryForm({
   );
   const [formRenderedAt] = useState(() => Date.now().toString());
   const [enhanced, setEnhanced] = useState(false);
+  const inquiryTypes =
+    variant === "quote" ? INQUIRY_TYPES.filter((option) => option !== GENERAL_INQUIRY) : INQUIRY_TYPES;
   const [inquiryType, setInquiryType] = useState(
-    variant === "quote" ? INQUIRY_TYPES[0] : "",
+    variant === "quote" ? inquiryTypes[0] : "",
   );
   const [embroidery, setEmbroidery] = useState("");
 
@@ -181,7 +183,7 @@ export function InquiryForm({
           <option value="" disabled>
             Select an inquiry type
           </option>
-          {INQUIRY_TYPES.map((option) => (
+          {inquiryTypes.map((option) => (
             <option key={option} value={option}>
               {option}
             </option>

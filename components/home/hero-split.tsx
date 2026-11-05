@@ -145,7 +145,7 @@ export function HeroSplit({ categories }: { categories: ProductCategory[] }) {
         </div>
 
         {/* Master Hero Stage */}
-        <div className="relative rounded-[2.5rem] border border-stone-200/90 bg-gradient-to-b from-stone-50 via-stone-100/60 to-stone-200/50 p-6 shadow-[0_30px_70px_-20px_rgba(28,25,23,0.14)] sm:p-10 lg:p-16">
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-stone-200/90 bg-gradient-to-b from-stone-50 via-stone-100/60 to-stone-200/50 p-6 shadow-[0_30px_70px_-20px_rgba(28,25,23,0.14)] sm:p-10 lg:p-16">
           {/* Subtle Atelier Grid Lines & Watermark */}
           <div
             className="pointer-events-none absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.03]"
@@ -161,7 +161,7 @@ export function HeroSplit({ categories }: { categories: ProductCategory[] }) {
 
           <div className="relative grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
             {/* Left Column: High-Fashion Copy & Interactive Selector */}
-            <div className="flex flex-col items-start gap-8 lg:col-span-5">
+            <div className="flex min-w-0 w-full flex-col items-start gap-8 lg:col-span-5">
               {/* Luxury Atelier Pill */}
               <div className="inline-flex items-center gap-2.5 rounded-full border border-leather/30 bg-leather/5 px-4 py-1.5 text-xs font-semibold tracking-wider text-leather">
                 <span className="relative flex h-2 w-2">
@@ -172,11 +172,11 @@ export function HeroSplit({ categories }: { categories: ProductCategory[] }) {
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.3em] font-extrabold tracking-tight text-ink leading-[1.08]">
+              <h1 className="max-w-full break-words text-[clamp(1.75rem,7vw,3.3rem)] font-extrabold leading-[1.08] tracking-tight text-ink">
                 Leather Jacket Manufacturer
                 <br className="hidden sm:block" />{" "}
                 in Pakistan for{" "}
-                <span className="relative inline-block font-serif italic text-leather">
+                <span className="relative inline break-words font-serif italic text-leather">
                   Wholesale &amp; Private Label
                   <span className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-gradient-to-r from-leather via-amber-600 to-transparent" />
                 </span>{" "}

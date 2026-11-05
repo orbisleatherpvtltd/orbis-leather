@@ -34,11 +34,11 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
   const primaryImage = product.images.find((image) => image.isPrimary) ?? product.images[0];
 
   return buildMetadata({
-    title: product.seoTitle ?? product.name,
+    title: `${product.name} | ORBIS Leather`,
     description: product.seoDescription ?? product.shortDescription ?? product.name,
     path: `/products/${product.slug}`,
     image: primaryImage?.url ? { url: primaryImage.url, alt: primaryImage.altText } : undefined,
-    noindex: false,
+    titleMode: "absolute",
   });
 }
 
