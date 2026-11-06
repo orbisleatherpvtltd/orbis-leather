@@ -122,26 +122,19 @@ export function HeroSplit({ categories }: { categories: ProductCategory[] }) {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Category Capsule Bar */}
-        <div className="mb-8 flex items-center justify-between gap-4 overflow-x-auto pb-2 scrollbar-none">
-          <div className="flex items-center gap-2">
-            <span className="mr-2 text-[11px] font-bold uppercase tracking-[0.2em] text-ink/40">
-              Specialized Units:
-            </span>
-            {categories.map((cat) => (
-              <Link
-                key={cat.slug}
-                href={`/products/${cat.slug}`}
-                className="group relative rounded-full border border-stone-200 bg-white/70 px-4 py-1.5 text-xs font-semibold text-ink/80 shadow-sm backdrop-blur-md transition-all duration-300 hover:border-leather hover:bg-leather hover:text-paper"
-              >
-                {cat.name}
-              </Link>
-            ))}
-          </div>
-
-          <div className="hidden items-center gap-2 text-xs font-medium text-ink/60 lg:flex">
-            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            Atelier Floor: Accepting Wholesale Production Runs
-          </div>
+        <div className="mb-8 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+          <span className="mr-2 shrink-0 text-[11px] font-bold uppercase tracking-[0.2em] text-ink/40">
+            Specialized Units:
+          </span>
+          {categories.map((cat) => (
+            <Link
+              key={cat.slug}
+              href={`/products/${cat.slug}`}
+              className="shrink-0 rounded-full border border-stone-200 bg-white/70 px-4 py-1.5 text-xs font-semibold text-ink/80 shadow-sm backdrop-blur-md transition-all duration-300 hover:border-leather hover:bg-leather hover:text-paper"
+            >
+              {cat.name}
+            </Link>
+          ))}
         </div>
 
         {/* Master Hero Stage */}
@@ -168,7 +161,7 @@ export function HeroSplit({ categories }: { categories: ProductCategory[] }) {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-leather opacity-75" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-leather" />
                 </span>
-                EST. LEATHER MANUFACTURING & OEM ATELIER
+                EST. 2001
               </div>
 
               {/* Main Headline */}
@@ -260,31 +253,6 @@ export function HeroSplit({ categories }: { categories: ProductCategory[] }) {
 
             {/* Right Column: 3D Interactive Hotspot Stage */}
             <div className="relative mx-auto flex w-full max-w-lg items-center justify-center lg:col-span-7 lg:max-w-none">
-              {/* Rotating Haute Atelier Seal */}
-              <div className="pointer-events-none absolute -right-4 -top-8 z-30 hidden sm:block lg:-right-8 lg:-top-10">
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                  className="relative flex h-28 w-28 items-center justify-center rounded-full border border-leather/30 bg-paper/90 p-2 shadow-2xl backdrop-blur-xl"
-                >
-                  <svg viewBox="0 0 100 100" className="h-full w-full">
-                    <path
-                      id="circlePath"
-                      d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
-                      fill="none"
-                    />
-                    <text className="fill-leather text-[8.5px] font-bold uppercase tracking-[0.24em]">
-                      <textPath href="#circlePath">
-                        • GENUINE CRAFTSMANSHIP • ORBIS LEATHER
-                      </textPath>
-                    </text>
-                  </svg>
-                  <div className="absolute flex h-10 w-10 items-center justify-center rounded-full bg-leather text-paper shadow-md">
-                    <span className="font-serif text-sm font-bold">O</span>
-                  </div>
-                </motion.div>
-              </div>
-
               {/* 3D Perspective Card Container */}
               <div
                 style={{ perspective: 1200 }}

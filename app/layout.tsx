@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { defaultOgImage } from "@/lib/seo/metadata";
 import { siteConfig, siteUrl } from "@/lib/site-config";
 
 const poppins = Poppins({
@@ -11,7 +12,7 @@ const poppins = Poppins({
 });
 
 const description =
-  "ORBIS Leather, premium B2B wholesale leather manufacturing and private label production.";
+  "Leather jacket manufacturer in Karachi, since 2001. Private label and custom embroidery jackets from 5 pieces per style. Request a quote.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -21,15 +22,19 @@ export const metadata: Metadata = {
   },
   description,
   openGraph: {
-    title: siteConfig.brandName,
+    title: "Leather Jacket Manufacturer Pakistan | MOQ 5 Pieces | ORBIS",
     description,
+    url: siteUrl,
     siteName: siteConfig.brandName,
+    locale: "en_US",
     type: "website",
+    images: [defaultOgImage],
   },
   twitter: {
-    card: "summary",
-    title: siteConfig.brandName,
+    card: "summary_large_image",
+    title: "Leather Jacket Manufacturer Pakistan | MOQ 5 Pieces | ORBIS",
     description,
+    images: [defaultOgImage.url],
   },
   ...(process.env.GOOGLE_SITE_VERIFICATION
     ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }

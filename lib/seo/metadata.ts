@@ -4,6 +4,13 @@ import { siteConfig, siteUrl } from "@/lib/site-config";
 const BRAND_SUFFIX = " - ORBIS Leather";
 const TITLE_LIMIT = 60;
 
+export const defaultOgImage = {
+  url: "/images/og.jpg",
+  width: 1200,
+  height: 630,
+  alt: "ORBIS Leather, leather jacket manufacturer in Karachi",
+};
+
 function composeTitle(title: string, titleMode: "template" | "absolute") {
   if (titleMode === "absolute") {
     return title;
@@ -42,7 +49,9 @@ export function buildMetadata({
   noindex = false,
 }: BuildMetadataInput): Metadata {
   const url = new URL(path, siteUrl).toString();
-  const images = image ? [{ url: image.url, alt: image.alt }] : undefined;
+  const images = image
+    ? [{ url: image.url, alt: image.alt }]
+    : [defaultOgImage];
   const fullTitle = composeTitle(title, titleMode);
 
   return {
@@ -55,14 +64,15 @@ export function buildMetadata({
       description,
       url,
       siteName: siteConfig.brandName,
+      locale: "en_US",
       type,
       images,
     },
     twitter: {
-      card: image ? "summary_large_image" : "summary",
+      card: "summary_large_image",
       title: fullTitle,
       description,
-      images: image ? [image.url] : undefined,
+      images: images.map((item) => item.url),
     },
   };
 }
